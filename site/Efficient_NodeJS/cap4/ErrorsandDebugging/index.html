@@ -1,0 +1,1217 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A new project generated from the default template project.">
+      
+      
+        <meta name="author" content="<Alexander Guerrero>">
+      
+      
+      
+        <link rel="prev" href="../../cap3/AsynchronyandEvents/">
+      
+      
+        <link rel="next" href="../../cap1/nodeFunfamentals/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>Errors and Debugging - Learning Node JS</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#errors-and-debugging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning Node JS" class="md-header__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Node JS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Errors and Debugging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning Node JS" class="md-nav__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Learning Node JS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFFICIENT NODEJS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EFFICIENT NODEJS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap2/ScriptsandModules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCRIPTS AND MODULES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap3/AsynchronyandEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ASYNCHRONY AND EVENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERRORS AND DEBUGGING
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERRORS AND DEBUGGING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#throwing-and-catching-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Throwing and Catching Errors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#throwing-and-catching-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Throwing and Catching Errors
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../cap1/nodeFunfamentals/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    EFFICIENT NODEJS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="errors-and-debugging">Errors and Debugging<a class="headerlink" href="#errors-and-debugging" title="Permanent link">&para;</a></h1>
+<p>En Node los objetos error son importantes porque nos dan contexto y detalles de la existencia de problemas, buenos manejadores de errores hacen programas mas seguros.
+Primero hablaremos del <strong>lanzamientos(throwing)</strong> y <strong>captura (catching)</strong>  de errores y luego discutiremos los diferentes tipos de errores. Y cómo se ve el <strong>manejo de errores en capas</strong>. Entonces nosotros exploraremos <strong>depurar código Node</strong> y discutiremos algunas <strong>medidas preventivas</strong> que podemos usar para <strong>reducir errores potenciales</strong>.</p>
+<h2 id="throwing-and-catching-errors">Throwing and Catching Errors<a class="headerlink" href="#throwing-and-catching-errors" title="Permanent link">&para;</a></h2>
+<p>Un error es una instancia de un objeto de la clase <code>Error</code>. A veces necesitarás crear tus propios objetos de error, como este:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Error message&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+Este es un objeto de error genérico, algo que nunca deberías usar. Hay una mejor opcion que lo discutiremos en breve. Node cuenta con integracion de errores que son basicamente objetos ya creados para ti. La siguiente seccion cubre eso.</p>
+<p><strong>¿Qué exactamente haces con un objeto de error?</strong> </p>
+<p>Bueno, <strong>independientemente del tipo de error</strong> y si <strong>tú lo creaste</strong> o es <strong>integrado</strong>, siempre que estés en un lugar del código donde <strong>una condición no debería ocurrir</strong>, necesitas <strong>señalar los detalles de ese problema</strong> a quien sea que esté usando tu código.</p>
+<p>Por ejemplo, supongamos que queremos crear una función para calcular la <strong>raíz cuadrada</strong> de un número. Una restricción que debería tener dicha función es <strong>bloquear cualquier operación</strong> que intente usar la función con un <strong>número negativo</strong>, ya que <strong>no existe raíz cuadrada para un número negativo</strong>.</p>
+<p>Ese caso es un <strong>error de entrada del usuario</strong> que <strong>se espera</strong>, y si ocurre, la función debería <strong>proporcionar una señal</strong> de que se está usando incorrectamente. </p>
+<p>Una forma simple de hacer esto es <strong>lanzando un error</strong> con <code>throw</code>:</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">calculateSquareRoot</span><span class="p">(</span><span class="nx">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">number</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Cannot calculate square root of negative number&#39;</span><span class="p">);</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="nx">calculateSquareRoot</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="c1">// Error: Cannot calculate square root of negative number</span>
+</span></code></pre></div></td></tr></table></div>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>Si se produce un error, la operación actual se detendrá por completo. Al producirse cualquier error en Node, el proceso se bloqueará y finalizará. Esto es lo que sucede al ejecutar este código:</p>
+<p><img alt="" src="../thowingerr.png" /></p>
+<p>Esto puede parecer incorrecto. ¿Por qué bloquear una aplicación completa debido a un simple uso erróneo de una sola función?</p>
+<p>Verificar la informacion que ingresa a la aplicacion por medio de lanzamiento de errores es vital  para la integridada de la aplicacion. Ignorar los errores pueden generar vulnerabilidades de seguridad y ser utilizados como puntos de ataques.</p>
+<h1 id="en-tus-modulos-principales-siempre-debes-generar-errores-cuando-te-encuentres-en-una-condicion-que-indique-un-problema">En tus módulos principales, siempre debes generar errores cuando te encuentres en una condición que indique un problema.<a class="headerlink" href="#en-tus-modulos-principales-siempre-debes-generar-errores-cuando-te-encuentres-en-una-condicion-que-indique-un-problema" title="Permanent link">&para;</a></h1>
+<p><strong>Lanzar un error</strong> hará que la <strong>operación actual se detenga completamente</strong>. Cuando <strong>lanzas errores en Node</strong>, el <strong>proceso se colapsará y saldrá</strong>. </p>
+<p>Aquí está lo que sucede cuando <strong>ejecutamos este código</strong>:</p>
+<p><img alt="" src="../thowingerr.png" /></p>
+<p>Esto <strong>puede sentirse mal</strong>. ¿Por qué <strong>colapsar toda una aplicación</strong> por un <strong>simple uso incorrecto de una sola función</strong>?</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>5f0563c (update files)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>La respuesta simple aquí es que es un <strong>problema que no debería ser ignorado</strong> y que <strong>debe manejarse de alguna forma</strong>.  <strong>Ignorar errores</strong> podría llevar a <strong>consecuencias no deseadas</strong> y compromete la <strong>integridad de la aplicación</strong>. Una función que se llama con la <strong>entrada incorrecta</strong> podría tener <strong>datos incorrectos propagados</strong> a través de toda la aplicación. <strong>Eso realmente no es bueno</strong>. En algunos casos, incluso podría causar una <strong>vulnerabilidad de seguridad</strong>. En este simple ejemplo, una <strong>entrada no validada</strong> podría ser el camino para un <strong>ataque explotador</strong> contra la aplicación.</p>
+<p>Para <strong>errores relacionados con el entorno de la aplicación</strong>, no manejarlos podría llevar a <strong>fugas</strong> y <strong>agotamiento potencial de recursos del sistema</strong>. <strong>Es demasiado riesgoso</strong> ignorar cualquier error. En tus <strong>módulos principales</strong>, siempre debes <strong>lanzar errores</strong> cuando estés en una condición que signifique un problema. Es tu <strong>señal</strong> de que un problema debe ser <strong>reconocido y manejado apropiadamente</strong> o hacer que la <strong>aplicación colapse</strong>.</p>
+<p>Ahora, los <strong>módulos que usan tus módulos principales</strong> podrían hacer una <strong>excepción para ciertos errores</strong>. Por ejemplo, un módulo que usa tu función <code>calculateSquareRoot</code> podría decidir <strong>implementar una excepción</strong> para cuando la función se llame con un <strong>número negativo</strong>. Eso se puede hacer <strong>capturando el error</strong>.</p>
+<p>Siempre que escribas código que <strong>use otro código</strong> (como llamar a una función), debes <strong>siempre recordar</strong> que ese otro código <strong>podría lanzar errores</strong>. Como <strong>usuario de ese código</strong>, puedes decidir <strong>qué hacer con esos errores</strong>. Lo haces <strong>capturando el error</strong> y <strong>manejándolo de alguna forma</strong>.</p>
+<p>Por ejemplo, supongamos que decidiste que cuando <code>calculateSquareRoot</code> se llame con un <strong>número negativo</strong>, solo debe <strong>imprimir una advertencia</strong>, no salir de toda la aplicación. <strong>Así es como lo haces</strong>:
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calculateSquareRoot</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Porque la llamada está envuelta en un <strong>try...catch</strong>, y el bloque <strong>catch</strong> solo <strong>imprime el error en la consola</strong>, usar este código y llamar a <code>calculateSquareRoot</code> con un <strong>número negativo</strong> <strong>no rompera el proceso</strong>. Este error ahora es una <strong>excepción manejada</strong>.</p>
+<p>El problema es que la <strong>excepción manejada</strong> aquí no es solo el error por un <strong>argumento de número negativo</strong>. Es <strong>cualquier error</strong> dentro de la función <code>calculateSquareRoot</code>.  Si la función lanza <strong>cualquier otro error</strong>, todos serán <strong>capturados por el try...catch</strong> e <strong>ignorados en este nivel</strong> también. Deberíamos hacer excepciones <strong>solo para los errores que conocemos</strong>. <strong>Cualquier error desconocido</strong> debería aun ser <strong>lanzado</strong>.</p>
+<details class="note">
+<summary>Note</summary>
+<p>El texto original dice:</p>
+<blockquote>
+<p>"Si la función lanza cualquier otro error, todos serán capturados por el try...catch e <strong>ignorados</strong> en este nivel también."</p>
+</blockquote>
+<p>La palabra "ignorados" aquí es confusa porque suena como si el error simplemente no se detectara. Pero en realidad sí se detecta — el <code>catch</code> lo atrapa. El problema es lo que pasa <strong>después</strong> de que lo atrapa.</p>
+<p>Como el <code>catch</code> no distingue entre errores, hace lo mismo con todos: El <code>catch</code> recibe cualquier error que ocurra dentro del <code>try</code>, pero solo sabe manejar el error que se tenía previsto — en este caso, "Número negativo". Si llega un error diferente, como un <code>TypeError</code> causado por un bug, el <code>catch</code> lo recibe sin saber qué hacer con él y ejecuta su código de todas formas, por lo tanto, el error queda ignorado — nunca se reporta, nunca se relanza, simplemente desaparece:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">calculateSquareRoot</span><span class="p">(</span><span class="mf">4</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">return</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// ← esto se ejecuta para CUALQUIER error</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Ahora imagina que dentro de <code>calculateSquareRoot</code> hay un bug — por ejemplo, intentas llamar un método que no existe en un número:</p>
+<div class="language-javascript annotate highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">calculateSquareRoot</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Número negativo&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">//(1)!</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">return</span><span class="w"> </span><span class="nx">n</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span><span class="w"> </span><span class="c1">// bug: los números no tienen toUpperCase </span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<ol>
+<li>Si el número es negativo, lanzamos un error manualmente.</li>
+</ol>
+<p>Eso lanza un <code>TypeError</code>. Un <code>TypeError</code> es el error que JavaScript lanza automáticamente cuando intentas hacer algo con un valor que no es compatible con esa operación — como llamar <code>.toUpperCase()</code> en un número, o acceder a una propiedad de <code>null</code>. No es un error que tú lanzaste con <code>throw</code>, sino uno que JavaScript mismo detectó porque algo en el código no tiene sentido.</p>
+<p>Entonces si llega ese <code>TypeError</code>, el <code>catch</code> lo recibe, ejecuta <code>return 0</code>, y el programa continúa. El <code>TypeError</code> nunca apareció en consola, nunca fue reportado, nunca fue relanzado. Simplemente entró al <code>catch</code> y desapareció. A eso se refiere con "ignorado" — no es que no se detectó, sino que <strong>se detectó y se descartó sin hacer nada útil con él</strong>.</p>
+<p>La solución es que dentro del <code>catch</code> preguntes si el error es el que tú conoces. Si no lo es, lo relanzas con <code>throw error</code>:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nx">calculateSquareRoot</span><span class="p">(</span><span class="mf">4</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;Número negativo&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// este lo conozco, lo manejo yo</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span><span class="w"> </span><span class="c1">// este no lo conozco, lo relanza</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Cuando haces <code>throw error</code>, el error <strong>sale del <code>catch</code> y sube un nivel</strong> — es decir, va al <code>try...catch</code> que esté por encima de este en el código. Si no hay ninguno, el programa crashea y el error aparece en consola. Eso es exactamente lo que quieres, porque significa que hay un bug real que necesitas ver y arreglar. El error ya no queda "ignorado".</p>
+<hr />
+<p>Por eso una frase más clara que la del texto sería:</p>
+<blockquote>
+<p>"Si la función lanza cualquier otro error — como un <code>TypeError</code> que JavaScript genera automáticamente cuando algo en el código no tiene sentido — todos serán capturados por el try...catch y <strong>descartados silenciosamente, ocultando bugs reales. Por eso los errores desconocidos deben relanzarse con <code>throw error</code>, para que suban un nivel y no queden enterrados.</strong>"</p>
+</blockquote>
+</details>
+<p>Para hacer eso, necesitamos una forma de <strong>manejar el error condicionalmente</strong>. Necesitamos <strong>verificar el tipo de un error</strong>. Hablemos de <strong>los tipos de errores</strong> a continuación.</p>
+<h2 id="types-of-errors">Types of Errors<a class="headerlink" href="#types-of-errors" title="Permanent link">&para;</a></h2>
+<p>Los distintos tipos de errores suelen tener diferentes estrategias de manejo. Conocer estos tipos y sus causas subyacentes ayuda a identificar qué ocurre cuando aparecen.
+Los tipos de errores más importantes en Node son los <strong>errores estándar(Standard Errors)</strong>, <strong>los errores del sistema(System Errors)</strong> y <strong>los errores personalizados(Custom Errors)</strong>. Analicemos algunos ejemplos.</p>
+<h3 id="standard-errors">Standard Errors<a class="headerlink" href="#standard-errors" title="Permanent link">&para;</a></h3>
+<p>Los errores estándar son errores integrados que proporciona JavaScript. El motor de JavaScript los genera cuando encuentra alguna condición inesperada que impide el funcionamiento normal del programa. Por ejemplo, cuando se utiliza una sintaxis incorrecta, se hace referencia a una variable antes de declararla o se utiliza una función de forma inválida.</p>
+<p>Las principales clases de error estándar en JavaScript son:  <strong>SyntaxError</strong>, <strong>ReferenceError</strong>, <strong>RangeError</strong>, and <strong>TypeError</strong> </p>
+<h4 id="syntaxerror">SyntaxError<a class="headerlink" href="#syntaxerror" title="Permanent link">&para;</a></h4>
+<p>Este es el tipo de error que se produce cuando intentamos ejecutar código que no es JavaScript válido. Lo obtenemos si usamos una palabra clave reservada, declaramos una variable con un nombre no válido, colocamos incorrectamente una coma, un corchete o un paréntesis, o hacemos cualquier otra cosa que no cumpla con las reglas sintácticas del lenguaje.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&gt;<span class="w"> </span>console.log<span class="o">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>console.log<span class="o">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w"> </span>^^^^^^^^^^^^^
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>//<span class="w"> </span>Uncaught<span class="w"> </span>SyntaxError:<span class="w"> </span>missing<span class="w"> </span><span class="o">)</span><span class="w"> </span>after<span class="w"> </span>argument<span class="w"> </span>list
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>&gt;
+</span></code></pre></div>
+<h4 id="referenceerror">ReferenceError<a class="headerlink" href="#referenceerror" title="Permanent link">&para;</a></h4>
+<p>Este es el tipo de error que se lanza cuando intentas usar una <strong>variable que no ha sido declarada</strong> o <strong>no está en el scope actual</strong>:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">// Uncaught ReferenceError: x is not defined</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kd">let</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+</span></code></pre></div></p>
+<h4 id="rangeerror">RangeError<a class="headerlink" href="#rangeerror" title="Permanent link">&para;</a></h4>
+<p>Este es el tipo de error que se lanza cuando intentas usar un <strong>valor que no está dentro del rango permitido</strong> impuesto por un <strong>límite de implementación</strong> o un <strong>límite de memoria</strong> —por ejemplo, si usas un método con un argumento que <strong>no está dentro del rango aceptado</strong>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">(</span><span class="mf">123.456</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">101</span><span class="p">);</span><span class="w"> </span><span class="c1">// (1)!</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w"> </span><span class="c1">// Uncaught RangeError: toFixed() digits argument</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span><span class="c1">// must be between 0 and 100</span>
+</span></code></pre></div>
+<ol>
+<li><code>toFixed()</code> solo acepta argumentos entre 0 y 100. Si pasas 101, JavaScript lanza un <code>RangeError</code> automáticamente.</li>
+</ol>
+<p>Llama a una funcion recurciva sin una condicion exit() podria generar un RangeError
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w"> </span><span class="nx">f</span><span class="p">();</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nx">f</span><span class="p">();</span><span class="w"> </span><span class="c1">// Uncaught RangeError: Maximum call stack size exceeded</span>
+</span></code></pre></div></p>
+<h4 id="typeerror">TypeError<a class="headerlink" href="#typeerror" title="Permanent link">&para;</a></h4>
+<p>Este es el tipo de error que se lanza cuando intentas usar un valor de un tipo inesperado en cualquier lugar donde se espera un tipo específico. Por ejemplo, el método <code>thing.toUpperCase()</code> espera que <code>thing</code> sea una cadena de texto, pero si intentas usar ese método con un número, obtendrás un error de tipo.
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">thing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">42</span><span class="p">;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">thing</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">// Uncaught TypeError: thing.toUpperCase is not a function</span>
+</span></code></pre></div></p>
+<p>Otros ejemplos de TypeError incluyen intentar modificar una variable constante, acceder a propiedades de objetos nulos e indefinidos y usar la palabra clave <code>new</code> con funciones que no son constructoras, entre otros casos.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Estos son los <strong>errores estándar más comunes</strong>. Hay algunos más como <strong>URIError</strong>, que está relacionado con el manejo de URIs, y <strong>EvalError</strong>, que existe <strong>solo por compatibilidad</strong> y ya <strong>no se lanza</strong> por JavaScript moderno.</p>
+</div>
+<h3 id="system-errors">System Errors<a class="headerlink" href="#system-errors" title="Permanent link">&para;</a></h3>
+<p>Los errores del sistema (System Errors) en Node se lanza cuando ocurre algo inesperado a nivel del sistema. Estos son basicamente los problemas que surgen debido al entorno y al sistema operativo donde se ejecuta una aplicación Node; por ejemplo, si se intenta leer o escribir en un archivo que no existe, usar un puerto de red que ya está en uso, enviar datos a través de un socket cerrado, etc.</p>
+<p>Estos errores tienen códigos específicos que puedes consultar para entender por qué ocurren. Aquí tienes algunos códigos de error comunes del sistema:</p>
+<dl>
+<dt><code>ENOENT</code></dt>
+<dd>
+<p>Se lanza cuando tratas de acceder a un archivo o directorio que no existe.</p>
+</dd>
+<dt><code>EACCES</code></dt>
+<dd>
+<p>Se lanza cuando una operación no tiene los permisos adecuados. Por ejemplo, si intentamos escribir en un archivo de solo lectura.</p>
+</dd>
+<dt><code>EADDRINUSE</code></dt>
+<dd>
+<p>Se lanza cuando un servidor HTTP (o TCP) no se inicia porque la dirección que intenta usar ya está en uso.</p>
+</dd>
+<dt><code>ECONNREFUSED</code></dt>
+<dd>
+<p>Se produce cuando se intenta establecer una conexión con un servidor que no está en corriendo.</p>
+</dd>
+</dl>
+<p>Otros <strong>errores de sistema comunes</strong> incluyen <strong>ETIMEDOUT</strong> (operación expiró), <strong>ECONNRESET</strong> (conexión reiniciada por el peer), <strong>ENOTFOUND</strong> (entidad no encontrada), <strong>EPERM</strong> (operación no permitida), y muchos más. Si el <strong>código de error</strong> se ve como <strong>ESOMETHING</strong>, usualmente es un <strong>código de error de sistema</strong>. 
+Puedes ver la <strong>lista completa de errores de sistema</strong> usando <code>os.constants.errno</code>, como se muestra en la <strong>Figura 4-1</strong>.</p>
+<p><img alt="" src="../systemError.png" title="Errores del sistema" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Estos <strong>códigos de error de sistema</strong> son <strong>códigos POSIX</strong>. <strong>POSIX</strong> (<strong>Portable Operating System Interface</strong>) es un <strong>conjunto de estándares</strong> (basados en el SO <strong>Unix</strong>) que se usan para <strong>mantener la compatibilidad</strong> entre <strong>diferentes sistemas operativos</strong>.</p>
+</div>
+<h3 id="custom-errors">Custom Errors<a class="headerlink" href="#custom-errors" title="Permanent link">&para;</a></h3>
+<p>Los custom error en Node son errores generados por ti, el desarrollador para manejar espcificas condiciones y escenarios de tu codigo. El error que lanzamos para la <strong>raíz cuadrada de un número negativo</strong> es un <strong>error personalizado genérico</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Custom errors are also known as user-specified errors (user in this
+case refers to the developer, not the end user of the application).</p>
+</div>
+<p>Trabajarás <strong>la mayor parte de tiempo con errores personalizados</strong> que con otros tipos. Los creamos para <strong>manejo de errores específico</strong> y para <strong>agregar contexto adicional</strong> o propiedades relevantes a la lógica de nuestra aplicación. Por ejemplo, un <strong>custom <code>UserNotFoundError</code></strong> podría usarse cuando algo intenta acceder al registro de un usuario que <strong>no está en el sistema</strong>, o un <strong><code>TransactionFailedError</code></strong> podría lanzarse cuando una transacción <strong>falla al completarse exitosamente</strong>. <strong>No es raro</strong> que una aplicación Node tenga <strong>decenas, si no cientos</strong>, de errores personalizados.</p>
+<p>Aunque una <strong>instancia genérica de la clase Error</strong> es un <strong>error personalizado</strong>, deberías <strong>dar a tus errores personalizados sus propias clasificaciones</strong>.  Podemos hacer eso <strong>extendiendo la clase Error</strong>, y luego <strong>instanciando objetos</strong> de esa clase extendida:</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">7</a></span>
+<span class="normal"><a href="#__codelineno-11-8">8</a></span>
+<span class="normal"><a href="#__codelineno-11-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">ValidationError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w"> </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">fieldName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w"> </span><span class="k">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ValidationError&#39;</span><span class="p">;</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">fieldName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fieldName</span><span class="p">;</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="p">}</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="c1">// To use:</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="c1">// throw new ValidationError(&#39;Some message&#39;, &#39;some_field&#39;);</span>
+</span></code></pre></div></td></tr></table></div>
+Esta clase ValidationError personalizada se puede usar para lanzar un error específico cuando estes validando algo. Por ejemplo, si necesita asegurarse de que un objeto de usuario tenga un campo de nombre de usuario, puede generar este error si no lo tiene:</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">validateUser</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">.</span><span class="nx">username</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ValidationError</span><span class="p">(</span><span class="s1">&#39;Username is required&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;username&#39;</span><span class="p">);</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Nota cómo el error es <strong>específico y útil</strong>; cuando se lanza, <strong>sabremos exactamente por qué ocurrió</strong>, y podremos obtener los <strong>detalles útiles</strong> que están empaquetados en él.  Aquí hay <strong>otro ejemplo</strong>:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w"> </span><span class="nx">validateUser</span><span class="p">({});</span><span class="w"> </span><span class="c1">// An empty object is not a valid user object</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">ValidationError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (1)!</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Error in field &#39;</span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">fieldName</span><span class="si">}</span><span class="sb">&#39;: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (2)!</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="sb">`Unexpected error: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li><code>error instanceof ValidationError</code> valida si el error fue creado con tu clase específica.</li>
+<li>Cualquier otro error en el runtime, <strong>lo vuelve a lanzar para no ocultarlo silenciosamente</strong></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Mantén la extensión de la clase Error a un solo nivel</strong>, y <strong>no crees un árbol de errores</strong>. Si tu código está dividido en <strong>diferentes estructuras</strong> (dominio, api, app, etc.), puedes <strong>categorizar tus errores</strong> en <strong>diferentes módulos</strong> bajo estas estructuras. <strong>No importa cómo organices tus errores personalizados</strong>, ¡<strong>sé lo más detallado posible al nombrarlos</strong>! </p>
+<p>¿Hay una condición donde <strong>no se puede establecer una conexión a la base de datos</strong>? Lanza un <strong><code>DatabaseConnectionError</code></strong>. </p>
+<p>¿Hay una condición donde <strong>no se pudo encontrar el registro de un usuario</strong> usando un ID único? Lanza un <strong><code>CouldNotFindUserFromIdError</code></strong>. </p>
+<p>Fijate cómo usé <strong>nombres basados en sustantivos</strong> y <strong>basados en verbos</strong> en estos dos ejemplos. <strong>Elige el que prefieras</strong>.</p>
+</div>
+<p>Observe cómo en este ejemplo, después de crear la excepción para el error conocido y esperado, se vuelven a lanzar todos los demás errores. Esto es muy importante, así que hablaremos de ello en la siguiente sección.</p>
+<div class="admonition info">
+<p class="admonition-title">Assertion Errors</p>
+<p>Otra <strong>categoría de errores</strong> en Node son los <strong>errores de afirmación</strong> (<strong>assertion errors</strong>). Son <strong>errores específicos</strong> usados principalmente en <strong>entornos de testing y desarrollo</strong>.  Se usan normalmente cuando el código <strong>espera que algo sea verdadero</strong> pero lo encuentra <strong>falso</strong>. </p>
+<p>Los <strong>errores de afirmación</strong> también se usan comúnmente para <strong>escribir tests</strong> y cuando <strong>depurando y validando suposiciones</strong> durante el desarrollo. Si una <strong>afirmación falla</strong> en cualquier lugar del código, significa que <em>probablemente hay un bug</em>* o un <strong>malentendido</strong> que lleva hasta ese punto de falla, que necesita ser abordado <strong>antes de lanzar cualquier cambio de código</strong>.</p>
+<p>Los <strong>errores de afirmación</strong> en Node se lanzan usando el <strong>módulo <code>assert</code></strong>, que proporciona un <strong>conjunto simple de pruebas de afirmación</strong> como las siguientes:</p>
+<ul>
+<li>
+<p><strong><code>assert(value[, message])</code></strong><br />
+¿Es el valor verdadero?</p>
+</li>
+<li>
+<p><strong><code>assert.equal(actual, expected[, message])</code></strong><br />
+¿El valor actual es igual al valor esperado?</p>
+</li>
+<li>
+<p><strong><code>assert.doesNotMatch(string, regexp[, message])</code></strong><br />
+¿El valor string coincide con el patrón regexp?</p>
+</li>
+</ul>
+<p>Cuando se llama a un <strong>método de afirmación</strong>, evalúa su <strong>condición específica</strong>. Si la <strong>condición no se cumple</strong>, el método de afirmación lanza un <strong><code>AssertionError</code></strong> que detalla la naturaleza del fallo. </p>
+<p>Si la condición <strong>se cumple</strong>, el programa continúa la ejecución normalmente. </p>
+<p>Hay <strong>muchos otros métodos de afirmación</strong> para varias condiciones. Consulta la <strong>página de documentación de Node</strong> para el módulo <code>assert</code>. </p>
+<p>Veremos ejemplos de cómo usar este módulo en el <strong>Capítulo 8</strong>.</p>
+</div>
+<h2 id="layered-error-management">Layered Error Management<a class="headerlink" href="#layered-error-management" title="Permanent link">&para;</a></h2>
+<p>Supongamos que tienes <strong>módulos A, B y C</strong>, donde el <strong>módulo B usa el módulo A</strong>, y el <strong>módulo C usa el módulo B</strong>. Cuando pensamos en <strong>gestión de errores</strong>, necesitas recordar este tipo de <strong>estructura en capas</strong>. </p>
+<p>Con el entendimiento de <strong>tipos de errores</strong> y cómo crear <strong>objetos de error personalizados</strong>, ahora podemos <strong>lanzar errores distintos</strong> para <strong>distintas condiciones</strong> y darle a las <strong>capas superiores</strong> que usan nuestros módulos principales la oportunidad de <strong>hacer excepciones</strong> para estos errores específicos. </p>
+<p>Sin embargo, <strong>después de hacer estas excepciones</strong>, un bloque <code>catch</code> <strong>siempre debería terminar</strong> con una llamada <code>throw error</code> para <strong>relanzar cualquier error desconocido</strong>:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w"> </span><span class="c1">// Some code that might throw multiple types of errors</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">KnownErrorType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w"> </span><span class="c1">// Handle specific known error</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">AnotherKnownErrorType</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w"> </span><span class="c1">// Handle another specific known error</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w"> </span><span class="c1">// Log and rethrow unknown errors</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Encountered an unexpected error: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Si no reenviamos el objeto de error (que se desconoce una vez que se han gestionado las excepciones conocidas), lo estaríamos ignorando sin más y haciendo que la aplicación se ejecutara en un estado inestable o incorrecto, sin indicar (a todas las capas superiores) que algo ha fallado en esta capa. Esto también complica mucho la depuración de problemas, ya que se perdería el contexto del error.</p>
+<p>Al volver a lanzar el error, lo propagas a las capas superiores. No volver a lanzar el error equivale, básicamente, a ocultarlo a las capas superiores.</p>
+<p>Existe otra forma de gestionar los errores. En lugar de lanzarlos, podemos pasarlos a otras partes de la aplicación que utilizan nuestros módulos principales y dejar que cualquiera de estas partes los gestionen o los reenvíen de nuevo</p>
+<p>El método de reenvío de errores es comunmente utilizado en la programación asíncrona y basada en eventos, donde un error que se produce en una función no se gestiona inmediatamente dentro de esa función, sino que se envía junto con cualquier dato a la siguiente función de la secuencia.</p>
+<p><code>El estilo de callback «error-first»</code> que se discutido en el capítulo 3 es, básicamente, una forma de realizar el reenvío de errores. Cuando se produce un error dentro de una función, este se empaqueta y se pasa como primer argumento al siguiente callback. Esto permite que la siguiente función de la secuencia
+compruebe si hay algún error y decida cómo gestionarlo:</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span>
+<span class="normal"><a href="#__codelineno-15-15">15</a></span>
+<span class="normal"><a href="#__codelineno-15-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">    </span><span class="nx">getSomeDataFromAnAPI</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">        </span><span class="nx">callback</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"> </span><span class="c1">// Forwarding the error to the callback</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="w">    </span><span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// No error occurred, continue as normal</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="p">}</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="nx">fetchData</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error fetching data: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Data received: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<code>Las funciones basadas en promesas</code> son otra forma de reenviar errores. Un error dentro de la implementación de la promesa se reenvía mediante el método <code>reject</code>:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span>
+<span class="normal"><a href="#__codelineno-16-16">16</a></span>
+<span class="normal"><a href="#__codelineno-16-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (1)!</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">     </span><span class="nx">getSomeDataFromAnAPI</span><span class="p">((</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">        </span><span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"> </span><span class="c1">// Forwarding the error through rejection</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">     </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">        </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// Resolving the promise if no error</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">     </span><span class="p">}</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="p">}</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="nx">fetchData</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Data received: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="w"> </span><span class="p">})</span>
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w"> </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error fetching data: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w"> </span><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>En <code>promise</code> se usa el <code>then()</code> obtener al promesa resuelta y el <code>catch()</code> para capturar los errores. </li>
+</ol>
+<p>Sin embargo, <strong>no necesitamos promesas ni callbacks</strong> para implementar el reenvío de errores. Podemos hacerlo simplemente haciendo que las <strong>funciones devuelvan</strong> ya sea <strong>datos (éxito)</strong> o <strong>error (fracaso)</strong>, o incluso <strong>ambos</strong> (éxito parcial). Esto se puede hacer <strong>unificando el retorno en un objeto</strong> con una <strong>propiedad de error</strong> y <strong>datos</strong>, o usando un <strong>enfoque más simple</strong> de devolver ya sea un <strong>objeto de datos</strong> o un <strong>objeto de error</strong>. Esto último es un poco complicado, ya que cada función tendría que devolver dos tipos diferentes. Recomendaría este último enfoque solo si el proyecto Node utiliza TypeScript, que añade tipado estático a JavaScript. En el capítulo 10 veremos los conceptos básicos de TypeScript para Node.</p>
+<p>Aquí tienes un <strong>ejemplo de una función</strong> que unifica el retorno en un objeto:</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span>
+<span class="normal"><a href="#__codelineno-17-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getSomeData</span><span class="p">();</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="nx">error</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="p">}</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fetchData</span><span class="p">();</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Error fetching data:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+El <strong>reenvío de errores</strong> puede usarse para mantener un <strong>flujo limpio y predecible</strong> tanto de <strong>datos y errores</strong> a través de las operaciones de la aplicación. </p>
+<p>Sin embargo, <strong>todas las partes de la aplicación</strong> necesitan <strong>manejar los errores o reenviarlos</strong>, del mismo modo, sin reenvío de errores, cada parte de la aplicacion necesita <strong>manejarlos o lanzarlos</strong>. La <strong>gestión de errores</strong> debe ser un <strong>estilo que se aplique en toda la aplicación</strong>.</p>
+<h2 id="debugging-in-node">Debugging in Node<a class="headerlink" href="#debugging-in-node" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../cap3/AsynchronyandEvents/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ASYNCHRONY AND EVENTS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                ASYNCHRONY AND EVENTS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../cap1/nodeFunfamentals/" class="md-footer__link md-footer__link--next" aria-label="Next: NODE FUNDAMENTALS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                NODE FUNDAMENTALS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

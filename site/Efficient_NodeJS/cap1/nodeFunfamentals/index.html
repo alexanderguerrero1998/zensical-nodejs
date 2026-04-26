@@ -1,0 +1,1035 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A new project generated from the default template project.">
+      
+      
+        <meta name="author" content="<Alexander Guerrero>">
+      
+      
+      
+      
+        <link rel="next" href="../../cap2/ScriptsandModules/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>NODE FUNDAMENTALS - Learning Node JS</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#node-fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning Node JS" class="md-header__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Node JS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NODE FUNDAMENTALS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning Node JS" class="md-nav__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Learning Node JS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFFICIENT NODEJS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EFFICIENT NODEJS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introducing Node
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-build-in-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Using Build - In Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Using Packages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#es-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ES Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-non-bloquing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The Non-Bloquing Model
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-build-in-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node Build-In Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node Packages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arguments-aginst-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Arguments Aginst Node
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap2/ScriptsandModules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCRIPTS AND MODULES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap3/AsynchronyandEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ASYNCHRONY AND EVENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap4/ErrorsandDebugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERRORS AND DEBUGGING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="././" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introducing Node
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-build-in-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Using Build - In Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Using Packages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#es-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        ES Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-non-bloquing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        The Non-Bloquing Model
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-build-in-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node Build-In Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node Packages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arguments-aginst-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Arguments Aginst Node
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    EFFICIENT NODEJS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="node-fundamentals">NODE FUNDAMENTALS<a class="headerlink" href="#node-fundamentals" title="Permanent link">&para;</a></h1>
+<p>Node es una entorno de ejecucion (runtime eviroment) que permite crear servicios utilizando el lenguaje de JavaScript.
+Este ultimo esta construido sobre el motor v8 de google chrome.</p>
+<h2 id="introducing-node">Introducing Node<a class="headerlink" href="#introducing-node" title="Permanent link">&para;</a></h2>
+<p>El motor v8 utilza un modelo de <strong>manejador de eventos (event driven)</strong> que permite manejar eficientemente conexiones y respuestas. Y este es el primero y mas importate concepto que se tiene que entender.</p>
+<p>Node es solo una interfaz para V8 cuando se ejecuta codigo JavaScript. Node es definido como un entorno de ejecucion que envuelve a V8 y provee modulo que permiten a los desarrolladores construir software con JS. Por lo tanto Node adopta el modelo que V8 tiene.</p>
+<p>La mayoria de modulos de node estan controlados por eventos y se puedn utilizat de forma asincrona sin bloquear el hilo d ejecucion.</p>
+<p>En node tienen un solo hilo principal para tu codigo y todas las operaciones lentas son ejecutadas fuera del hilo principal asincronicamente.</p>
+<p>Cualquier codigo que deba ejecutarse depues de una operacion lenta puede gestionarse con eventos y menejadores de eventos. un evento significa que algo sucedio y que debe realizarse una accion especifica. La accion puede definirse en una funcion de menejador de eventos que se asocia al evento. Cada vez que se señaliza el evento se ejecuta su funcion de manejador. Esto es lo que significa "manejador por eventos".</p>
+<h2 id="using-build-in-modules">Using Build - In Modules<a class="headerlink" href="#using-build-in-modules" title="Permanent link">&para;</a></h2>
+<p>Puedes crear un servidor wen usando <code>buil</code> del modulo <code>node:http</code></p>
+<p><img alt="" src="../createServer.png" /></p>
+<p>La funcion <code>require</code> es parte del metodo de gestion de dependencias original de Node y permite usar caracteristicas de otros modulos. Al requerir el modulo <code>node:http</code>, modulo <code>serve.js</code> ahora depende de el. No puede ejecutarse sin el.</p>
+<p>Nosotros invocamos <code>createServe</code> para crear un objeto de servidor, esta recibe como argumento una funcion conocida como <code>RequestListener</code>.</p>
+<p>Una funcion <em>listener</em> en Node es asociada con cierto evento que se ejecuta cuando este evento ocurre. Node ejecuta <code>RequestListener</code> cada vez que hay una conexion de solicitud entrante al servidor web.</p>
+<p>La funcion <strong>listener</strong> recibe dos argumentos:</p>
+<ul>
+<li><em>El <code>resquest</code> Object</em>: Puedes usar este objeto para leer informacion acerca de solicitudes que entran.</li>
+<li><em>El <code>response</code> Object</em>: Puedes usar este objeto para escribir cosas al solicitante.</li>
+</ul>
+<p>La funcion <code>creteServer</code> solo crear un objeto de servidor. Esto no lo activa. Para activar el servidor web, necesitas llamar al metodo <code>listen</code> en <code>createServer</code>.</p>
+<p>El metodo <code>listen</code> acepta varios arguementos, como puerto del OS y el host que usa para el servidor. El ultimo argumento es una funcion que se ejecutara si el servidor esta ejecutandose correctemente el el puerto especificado.</p>
+<p>Los metodos <code>createServer</code> y <code>listen</code> son ejemplos de funciones manejadoras de eventos, que estan asociadas con enventos relacionado a una operacion asincrona.</p>
+<h2 id="using-packages">Using Packages<a class="headerlink" href="#using-packages" title="Permanent link">&para;</a></h2>
+<p>El administrador de paquetes en Node es <code>npm</code>. Este es un simple <code>CLI</code>que te permite administrar e intalar paquete externos en proyecto Node. Una paquete <code>npm</code> puede ser un solo modulo o una coleccion de modulos agrupados y expuestos expuestos con una API.</p>
+<p>En este ejemplo vamos a descargar el paquete <code>lodash</code> para esto podemos utilizar el comando <code>npm install lodash</code>.</p>
+<p>Este comando descarga el paquete <code>lodash</code> del resgistro de <code>npm</code> y lo ubica en la carpeta de <code>node_modules</code> (la cual se creara si todavia no ha sido creada).
+<img alt="" src="../lodash.png" />
+Dado que llamamos al metodo <code>require</code> con un modulo no incorporado (osea <code>lodash</code> en vez de esto <code>node:lodash</code>), Node lo buscara en la carpeta <code>node_modules</code> y gracias a <code>npm</code> lo encontrara ahi.</p>
+<p>Cuando instalas un modulo, el comando<code>npm</code> lo listara en <em>package.json</em> bajo la seccion <strong>dependencies</strong></p>
+<p><img alt="" src="../packageJSON.png" /></p>
+<p>El  <em>package.json</em> tambien contiene iformacion sobre el proyecto como, el nombre, version , descripcion y mas.
+Puedes crear un archivo <em>package.json</em> usando el comando <code>npm init</code></p>
+<p>Cuando otros desarroladores jalan (pull) tu codigo, ellos pueden correr el comando <code>npm install</code> sin ningun argumento, y npm leera todas las dependencias del <em>package.json</em> y las instala en la carpeta <em>node_modules</em>.</p>
+<p>Algunos paquetes solo son necesarios en un entorno de desarrollo, no en una de produccion. Puede indicar al comando <code>npm install</code> que incluya un paquete como despendencia exclusiva de desarrollo añadiendo el argumento <code>--save-dev</code> o <code>-D</code> para abreviar. <code>npm installa -D eslint</code></p>
+<p>Este se instalara en la carpeta <em>node_modules</em> y se listara en el <em>package.json</em> bajo la seccion <strong>devDependencies</strong>.
+Por cada dependencia que instalas, estas indirectamente dependiendo de otras dependencias y estas a su vez, de sub dependencias. Se conciente de que estas formando un gran arbol de dependencias.</p>
+<p><img alt="" src="../dependencies.png" /></p>
+<h2 id="es-modules">ES Modules<a class="headerlink" href="#es-modules" title="Permanent link">&para;</a></h2>
+<p>Node tiene por defecto dos caragadores de modulos, el primero por defecto es el cargador <code>CommonJS</code>. El otro es el cargador nativo de JavaScript.</p>
+<p>Una importante diferencia entre los dos sistemas de modulos esque CommonJS carga dinamicamente en tipo de ejecucion, mientras que ES caraga en tiempo de compilacion. El primero es sincrono y el segungo asincrono.
+<img alt="" src="../expimp.png" />
+Tenga en cuenta el uso de las sentencias <code>import</code> y <code>export</code>. Esta en la sintaxis de modulos ES. Se utiliza <em>import</em> para declara una dependencia de modulo y <em>export</em> para definir que pueden usar otros modulos, cuando dependan del suyo.</p>
+<p><img alt="" src="../importES.png" /></p>
+<p>Sin el <code>./</code> Node asume que el modulo que estas intentando importar es un modulo integrado o un modulo que existe en la carpeta <em>node_modules</em>.</p>
+<p>La sintaxis  <code>export object</code> es concida como <em>exportaciones con nombres</em>, es ideal cuando necesitas exportar multiples elementos en un modulo. Se puede utilizar la palabra clave <code>export</code> como prefijo de cualquier objeto, incluyendo funciones clases y varibles destructuras.</p>
+<p><img alt="" src="../exportprefix.png" /></p>
+<p>Pueden tambien utilizar <code>export</code> al final del modulo para exportar todos los nombre de objetos juntos.</p>
+<p><img alt="" src="../exportEnd.png" /></p>
+<p>Puedes importar individualemte, o usar <code>*</code> para importar todo.
+ <img alt="" src="../importIAll.png" /></p>
+<p>Adicionalmente los <code>modulos ES</code> tambien tiene una sitaxis de exportacion por defecto.</p>
+<p><img alt="" src="../exportDef.png" /></p>
+<p>Tenga encuenta que para importar una <em>exportacion por defecto</em> debe asignarle un nombre. Mientras que con las exportaciones con nombre no es necesario, estas son mas consistentes, faciles de descubir y mantener. Mi recomendacion es evitar las exportaciones predeterminadas, simpre usa exportaciones nombradas.</p>
+<h2 id="the-non-bloquing-model">The Non-Bloquing Model<a class="headerlink" href="#the-non-bloquing-model" title="Permanent link">&para;</a></h2>
+<p>Una promesa <code>Promise Object</code> es un objeto que representa un valor que debe estar disponible en el futuro. Esto nos permite envolver de forma nativa una operacion asincrona como una Promesa a la que se puede adjuntar funciones de controlador y ejecutar mas tarde una vez que se resuelven los valores de la Promesa.</p>
+<p><img alt="" src="../asyn-away.png" /></p>
+<h2 id="node-build-in-modules">Node Build-In Modules<a class="headerlink" href="#node-build-in-modules" title="Permanent link">&para;</a></h2>
+<p>Existen algunos modules claves de Node. Es bueno familiarizarse con esta lista y probar lo que puedes hacer con Node.</p>
+<p><img alt="" src="../nodeModules.png" /></p>
+<h2 id="node-packages">Node Packages<a class="headerlink" href="#node-packages" title="Permanent link">&para;</a></h2>
+<p>npm y Node.js forman un ecosistema poderoso para JavaScript. Antes de Node, no existía un gestor de paquetes en el mundo JS, lo que hizo de npm algo revolucionario al cambiar completamente la forma de trabajar.
+El registro de npm cuenta con más de un millón de paquetes instalables para servidores Node, con una CLI sencilla que permite instalar, mantener y compartir código. También es posible instalar paquetes desde otros registros, incluso directamente desde GitHub.
+Lo más destacable es su versatilidad: npm y el sistema de módulos de Node no se limitan a servidores o navegadores. Pueden usarse para empaquetar, organizar y gestionar dependencias en cualquier entorno JavaScript, incluso en dispositivos embebidos. Los paquetes disponibles van desde utilidades pequeñas y específicas hasta herramientas completas para el ciclo de vida de aplicaciones grandes y complejas.</p>
+<p>Aquí un resumen de las cuatro herramientas principales disponibles en npm:
+- <code>ESLint</code> analiza el código JavaScript en busca de problemas, errores potenciales en tiempo de ejecución e inconsistencias de estilo. En algunos casos puede corregirlos automáticamente. Es una herramienta solo para desarrollo, no se incluye en producción.
+- <code>Prettier</code> se encarga del formato del código de manera automática: indentación, longitud de líneas, uso de comillas, punto y coma, etc. Elimina la necesidad de tomar decisiones manuales de estilo, garantizando consistencia sin esfuerzo.
+- <code>Webpack</code> permite empaquetar aplicaciones frontend de múltiples archivos en un solo archivo optimizado para producción. También compila extensiones de JavaScript como JSX para React. Puede usarse de forma independiente, sin necesidad de un servidor Node.
+- <code>TypeScript</code> añade tipado estático y otras características al lenguaje. Ayuda a detectar errores antes de ejecutar el código, mejora el autocompletado en los editores y facilita el mantenimiento de proyectos grandes.</p>
+<p>En conjunto, estas herramientas enriquecen el desarrollo JavaScript tanto en frontend como en backend. Es importante destacar que Node no tiene que ser el servidor de tu aplicación para aprovechar estas utilidades: puedes usarlo únicamente como capa de herramientas, combinándolo con otros frameworks como Ruby on Rails.</p>
+<h2 id="arguments-aginst-node">Arguments Aginst Node<a class="headerlink" href="#arguments-aginst-node" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Curva de aprendizaje — El modelo asíncrono y sin bloqueos es conceptualmente distinto a lo que la mayoría de desarrolladores conoce, y requiere tiempo para interiorizarse.</li>
+<li>Sistema de módulos confuso — Node soporta tanto CommonJS como ES Modules, pero mezclarlos genera inconsistencias y problemas de compatibilidad, especialmente para principiantes.</li>
+<li>Gestión de dependencias pesada — Los proyectos pueden acumular cientos de paquetes en node_modules. Mantenerlos actualizados, resolver conflictos de versiones y reemplazar paquetes abandonados es una tarea continua y exigente.</li>
+<li>Seguridad — Por defecto, un script de Node tiene acceso ilimitado al sistema de archivos, la red y otros recursos del sistema, lo que representa un riesgo al usar código de terceros. Aunque se está introduciendo un modelo de permisos, no viene activado por defecto.</li>
+<li>Falta de herramientas integradas — Node no incluye validación de tipos, linting ni formateo de forma nativa, obligando a depender de paquetes externos y configuraciones adicionales antes de poder empezar a desarrollar.</li>
+<li>No apto para tareas intensivas de CPU — Al ser monohilo, Node solo usa un núcleo a la vez. Tareas como procesamiento de imágenes o vídeo generan cuellos de botella, y JavaScript es menos eficiente que lenguajes como C++ o Rust para este tipo de cómputo.</li>
+<li>Tipado dinámico — La ausencia de tipos estrictos en JavaScript facilita errores difíciles de detectar en proyectos grandes, complicando el mantenimiento y la comprensión del código.</li>
+</ul>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>Node es un potente marco para crear servicios de backend. Envuelve el motor V8 JavaScript para permitir a los desarrolladores ejecutar código JavaScript de forma sencilla, y se basa en un modelo sencillo, impulsado por eventos y sin bloqueos que facilita a los desarrolladores la creación de aplicaciones eficientes y escalables. En Node, las operaciones asíncronas se gestionan con funciones de devolución de llamada u objetos Promise. Las devoluciones de llamada y las promesas son implementaciones sencillas de un evento único que se gestiona con una función. Las promesas son una alternativa mejor que las devoluciones de llamada, ya que ofrecen una sintaxis más legible y pueden estructurarse de manera que permitan un mayor control sobre el código. Los módulos integrados en Node proporcionan un marco de trabajo de bajo nivel en el que los desarrolladores pueden basar sus aplicaciones para no tener que empezar desde cero. El sistema de módulos de Node permite a los desarrolladores organizar su código en módulos reutilizables que pueden importarse y utilizarse en otras partes de la aplicación. Node cuenta con una comunidad amplia y activa que ha creado muchos paquetes populares que pueden integrarse fácilmente en proyectos Node. Estos paquetes se pueden encontrar y descargar desde el registro npm. En el siguiente capítulo, exploraremos la CLI y el modo REPL de Node y aprenderemos cómo Node carga y ejecuta módulos. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="../../cap2/ScriptsandModules/" class="md-footer__link md-footer__link--next" aria-label="Next: SCRIPTS AND MODULES">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                SCRIPTS AND MODULES
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

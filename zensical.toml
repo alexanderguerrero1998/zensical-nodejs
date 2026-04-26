@@ -7,22 +7,25 @@
 # ============================================================================
 
 [project]
-
-# The site_name is shown in the page header and the browser window title
-#
-# Read more: https://zensical.org/docs/setup/basics/#site_name
-site_name = "Documentation"
-
-# The site_description is included in the HTML head and should contain a
-# meaningful description of the site content for use by search engines.
-#
-# Read more: https://zensical.org/docs/setup/basics/#site_description
+site_name = "Learning Node JS"
 site_description = "A new project generated from the default template project."
+site_author = "<Alexander Guerrero>"
+repo_url = "https://github.com/alexanderguerrero1998/zensical-nodejs"
+repo_name = "zensical-nodejs"
+docs_dir = "docs"
+edit_uri = "edit/main/docs/"
+nav = [
+        {
+          "EFFICIENT NODEJS" = [ 
+            { "NODE FUNDAMENTALS" = "Efficient_NodeJS/cap1/nodeFunfamentals.md" },
+            { "SCRIPTS AND MODULES" = "Efficient_NodeJS/cap2/ScriptsandModules.md" },
+            { "ASYNCHRONY AND EVENTS" = "Efficient_NodeJS/cap3/AsynchronyandEvents.md" },
+            { "ERRORS AND DEBUGGING" = "Efficient_NodeJS/cap4/ErrorsandDebugging.md" },
+          ]
+        },{ "OTRO LIBRO" = [ { "NODE FUNDAMENTALS" = "Efficient_NodeJS/cap1/nodeFunfamentals.md" },]}
+  
+]
 
-# The site_author attribute. This is used in the HTML head element.
-#
-# Read more: https://zensical.org/docs/setup/basics/#site_author
-site_author = "<your name here>"
 
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.

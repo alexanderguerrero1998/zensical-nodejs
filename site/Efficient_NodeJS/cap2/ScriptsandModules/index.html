@@ -1,0 +1,1227 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A new project generated from the default template project.">
+      
+      
+        <meta name="author" content="<Alexander Guerrero>">
+      
+      
+      
+        <link rel="prev" href="../../cap1/nodeFunfamentals/">
+      
+      
+        <link rel="next" href="../../cap3/AsynchronyandEvents/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>Scripts and Modules - Learning Node JS</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scripts-and-modules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning Node JS" class="md-header__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Node JS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scripts and Modules
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning Node JS" class="md-nav__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Learning Node JS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFFICIENT NODEJS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EFFICIENT NODEJS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCRIPTS AND MODULES
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCRIPTS AND MODULES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#node-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node CLI
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options-an-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Options an Arguments
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enviroment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Enviroment Variables
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enviroment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-mejor-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UN MEJOR CONTEXTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntas-y-respuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PREGUNTAS Y RESPUESTAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolving-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resolving Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Loading Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoping-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Scoping Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Executing Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Caching Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap3/AsynchronyandEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ASYNCHRONY AND EVENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap4/ErrorsandDebugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERRORS AND DEBUGGING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#node-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node CLI
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options-an-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Options an Arguments
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enviroment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Enviroment Variables
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enviroment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-mejor-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        UN MEJOR CONTEXTO
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preguntas-y-respuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        PREGUNTAS Y RESPUESTAS
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Node Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolving-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resolving Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Loading Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scoping-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Scoping Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Executing Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Caching Modules
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Summary
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../cap1/nodeFunfamentals/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    EFFICIENT NODEJS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="scripts-and-modules">Scripts and Modules<a class="headerlink" href="#scripts-and-modules" title="Permanent link">&para;</a></h1>
+<p>Es este capitulo aprenderemos como Node carga y ejecuta script y modulos, empezaremos explorando mas opciones, argumentos y entornos de variables que pueden ser usados con el comando <code>node</code> y aprenderemos mas acerca de que podemos hacer con una sesion <code>RELP</code>. Aprendemos los pasos a tomar para cargar y ejecutar un modulo</p>
+<h2 id="node-cli">Node CLI<a class="headerlink" href="#node-cli" title="Permanent link">&para;</a></h2>
+<p>El comando node tiene varios opciones para personalizar su comportamient. Tambien soporta argumentos y variables de entorno para mayor personalizacion y para transferir datos del entorno del Sistema Operativo al entorno de Node</p>
+<p>Si escribirmo <code>node -h | more</code> Nos mostrara documentacion de ayuda para el comando.</p>
+<p><img alt="" src="../nodeMore.png" /></p>
+<p>Las dos primeras lineas especifican como usar el comando node. Todo lo que esta entre corchetes, es opcional lo que significa que, segun la primera linea, podemos usar el comando node por si solo, sin opciones ni argumento. Asi es como iniciamos una sesion RELP.</p>
+<p>Un <code>REPL</code> es una consola interactiva donde escribes código y se ejecuta inmediatamente.
+Significa: </p>
+<p><code>R</code> → Read <code>E</code> → Eval <code>P</code> → Print <code>L</code> → Loop</p>
+<p>En la pagina de ayuda justo despues de las lineas de uso, hay una lista de opciones que puedes usar con el comando. Dejame indicarte algunas opciones que deberias tener en cuenta.</p>
+<h2 id="options-an-arguments">Options an Arguments<a class="headerlink" href="#options-an-arguments" title="Permanent link">&para;</a></h2>
+<p>La opcion <code>--check</code> o <code>-c</code> revisa la <strong>sintaxis</strong> del script de Node sin correr el script. Ejm. <strong>node --check index.mjs</strong></p>
+<p>La opcion <code>--eval</code> y <code>--print</code> o <code>-e</code> y <code>-p</code> ambas pueden ser usadas para excutar codigo directamente en la linea de comandos. Ejm. <strong>node -p "Math.random()"</strong></p>
+<p>la opcion <code>--watch</code> permite monitorizar un archivo (y sus dependencias) para detectar cambios. Es util en entornos de desarrollo. Ejm <strong>node --watch index.mjs</strong> Esto iniciara el servidor en modo de monitorizacion. Realiza un cambio en el archivo y observa como el comando node se reinicio automaticamente.</p>
+<h2 id="enviroment-variables">Enviroment Variables<a class="headerlink" href="#enviroment-variables" title="Permanent link">&para;</a></h2>
+<p><code>process</code> es un objeto global que representa el programa de Node que se está ejecutando en el sistema operativo. Es como el puente entre tu código JavaScript y el sistema operativo. A través de process puedes acceder a cosas como: variables de entorno, argumentos de la terminal, versión de Node, sistema operativo, eventos del proceso.</p>
+<p><code>process.env</code> es una propiedad del objeto process que contiene todas las variables de entorno del sistema. Simplemente contiene pares clave-valor que vienen del sistema operativo. Es básicamente un objeto así:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;3000&quot;</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nx">API_KEY</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abc123&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nx">API_KEY_1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xyz789&quot;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+</span></code></pre></div>
+Node no interpreta el significado, solo guarda los valores. 
+<code>process.env</code> realmente viene del sistema operativo (Linux, Windows, etc.), no de Node. Node simplemente lo expone a JavaScript.</p>
+<p>Como crearlas, en la linea de comandos pon:
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$env</span>:PORT<span class="o">=</span><span class="m">4000</span>
+</span></code></pre></div>
+Las variables de entorno se usan para guardar configuración sensible o dependiente del entorno.
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>PORT
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>API_KEY
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>DATABASE_URL
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>JWT_SECRET
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>EMAIL_PASSWORD
+</span></code></pre></div></p>
+<h3 id="un-mejor-contexto">UN MEJOR CONTEXTO<a class="headerlink" href="#un-mejor-contexto" title="Permanent link">&para;</a></h3>
+<p>Ok, vamos a ponerlo todo en perspectiva. Voy a explicarlo como un flujo natural, para que veas la relación entre <strong>Node, process y el sistema operativo</strong> (SO) y por qué existe.</p>
+<p>1️⃣ El SO y los procesos</p>
+<p>Cada vez que ejecutas un programa, el sistema operativo crea un “proceso”.</p>
+<ul>
+<li>Un proceso es básicamente un contenedor donde se ejecuta tu programa: tiene memoria, acceso a archivos, variables de entorno, y puede comunicarse con hardware o red.</li>
+<li>El SO controla y regula esos procesos: quién puede leer qué, cuándo se detiene, qué recursos usa.</li>
+</ul>
+<p>2️⃣ Node.js como intermediario</p>
+<p>Node.js es un entorno de ejecución para JavaScript que corre fuera del navegador.</p>
+<ul>
+<li>Cuando haces node app.js, <strong>Node arranca su propio proceso dentro del SO</strong>.</li>
+<li>Node toma ese contenedor y le pone a tu disposición herramientas para interactuar con él.</li>
+<li>Una de esas herramientas es <code>process</code>.</li>
+</ul>
+<p>💡 Piensa en Node como un traductor entre tu código JS y el sistema operativo.</p>
+<p>3️⃣ Qué hace <code>process</code></p>
+<p><code>process</code> es la interfaz de Node para tu proceso dentro del SO. Gracias a él puedes:</p>
+<p>1 Leer variables de entorno:
+- El SO las define, Node te permite verlas desde JS (process.env).
+- Objetivo: que tu app pueda adaptarse al entorno sin tocar código.</p>
+<p>2 Acceder a información del proceso:
+- PID (process.pid), directorio actual (process.cwd()), plataforma (process.platform).
+- Objetivo: hacer que tu app pueda comportarse diferente según dónde corre o ser monitorizada.</p>
+<p>3 Controlar la ejecución:
+- Salir del programa (process.exit()), escuchar eventos (process.on(...)).
+- Objetivo: manejar errores, cierres ordenados, señales del SO.</p>
+<p>4️⃣ Cómo puede process acceder al SO</p>
+<ul>
+<li>Node se comunica directamente con el núcleo del SO a través de su runtime escrito en C/C++ (el motor V8 y librerías internas).</li>
+<li>Cuando llamas a process.env.PORT, Node le pide al SO: “dame la variable de entorno PORT para este proceso”.</li>
+<li>Cuando llamas a process.exit(1), Node le dice al SO: “termina este proceso con código 1”.</li>
+</ul>
+<p>Es decir, <code>process</code> es tu puerta de entrada programática al entorno del SO, pero siempre a través de Node, que actúa como traductor y garante de seguridad.</p>
+<p>5️⃣ Para qué sirve esto</p>
+<ul>
+<li>Portabilidad: tu app puede correr en Windows, Linux o macOS sin cambios, porque Node traduce las diferencias del SO.</li>
+<li>Configuración flexible: variables de entorno, argumentos de línea de comandos, directorios, etc.</li>
+<li>Control y monitorización: puedes manejar errores, reinicios y señales externas de manera programática.</li>
+<li>Seguridad: no accedes al SO directamente, Node protege y regula el acceso.</li>
+</ul>
+<h3 id="preguntas-y-respuestas">PREGUNTAS Y RESPUESTAS<a class="headerlink" href="#preguntas-y-respuestas" title="Permanent link">&para;</a></h3>
+<p><strong>¿Cuando declaro una variable en <code>process.evn</code> esta declaracion se hace a nivel de sistema operativo ?</strong></p>
+<p>No exactamente, aunque es fácil confundirse porque process.env se siente como “el sistema operativo dentro de Node”. Te explico con claridad:</p>
+<p>Cuando haces algo como:
+<div class="language-JS highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MI_VAR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;valor&quot;</span><span class="p">;</span>
+</span></code></pre></div></p>
+<ul>
+<li><strong>Esto no cambia el sistema operativo</strong> ni sus variables de entorno globales de manera permanente.</li>
+<li><strong>Lo que estás haciendo es modificar el objeto</strong> <code>env</code> <strong>que Node.js creó al arrancar</strong>. Ese objeto es una copia de las variables de entorno que el SO tenía en el momento de ejecutar Node.</li>
+<li>Cualquier cambio que hagas en<code>process.env</code> <strong>solo vive dentro del proceso de Node</strong> y se pierde cuando el programa termina. Otros programas o terminales no verán ese valor.</li>
+</ul>
+<p><strong>¿Puedo leer desde una aplicacion en Node.js una variable de entorno que pertenece a otra aplicación (como Netflix) instalada en mi mismo ordenador, asumiendo que ambas corren por separado y no comparten código ni configuración?</strong></p>
+<p>Ah, aquí hay que ser muy preciso: ❌ No puedes simplemente “espiar” variables de otra aplicación que corre en tu SO si esa app no puso esa variable en el entorno de tu terminal o proceso de Node.</p>
+<p>Lo que ocurre es esto:</p>
+<ul>
+<li>Cada aplicación corre en su propio proceso.</li>
+<li>Las variables de entorno son heredadas del SO al arrancar ese proceso.</li>
+<li>Node solo ve las variables de entorno del proceso que lo lanzó.</li>
+</ul>
+<p><strong>¿Si Cada aplicación corre en su propio proceso, quiere decir que al principio no exisiten variables de entorno, si todavia no se ha definido niguna ?</strong></p>
+<p>Exactamente, vas por buen camino. 🌱</p>
+<p>Al arrancar un sistema operativo recién iniciado, no hay variables de entorno “mágicas” definidas aún. Lo que ocurre es:</p>
+<ul>
+<li><strong>El SO sí tiene un conjunto base de variables internas</strong>, como <code>PATH</code>, <code>HOME</code> (Linux/macOS) o SystemRoot (Windows). Son definidas por el propio sistema y por los programas que se cargan al iniciar.</li>
+<li>Cada proceso que se ejecute hereda una copia de esas variables del entorno del proceso padre (por ejemplo, tu terminal o el gestor de inicio).</li>
+<li>Si no se define ninguna variable extra, <code>process.env</code> de Node verá solo esas básicas que el SO y tu terminal le pasaron.</li>
+</ul>
+<p>En otras palabras: las variables de entorno “no existen” hasta que algún proceso las define o el SO las proporciona. Cada proceso tiene su propia copia y puede modificarlas solo dentro de sí mismo.</p>
+<h2 id="node-modules">Node Modules<a class="headerlink" href="#node-modules" title="Permanent link">&para;</a></h2>
+<p>La palabra modulo es una pieza reutilizable de codigo. Lo puedes incluir para un aplicacion la veces que necesites. Cuando especificas un modulo como dependencia Node realiza algunos pasos para completar el proceso de carga del modulo: contenido del modulo, aislamiento del ambito del modulo , ejecucion del contenido del modulo y almacenamiento en cache del modulo.</p>
+<h2 id="resolving-modules">Resolving Modules<a class="headerlink" href="#resolving-modules" title="Permanent link">&para;</a></h2>
+<p>Node usa el siguiente proceso para determinar como encontrar un modulo que se esta importado.</p>
+<p>Si el nombre del modulo no empieza con <code>.</code>(que indica una ruta relativa) o una <code>/</code>(que indica una ruta absoluta), Node comprobara primero si se trata de un modulo integrado. Si lo es, lo cargar y ejecutara directamente.</p>
+<p>Si el modulo no esta integrado, Node buscara en la carpeta <em>node_modules</em>, comenzado desde la ubicacion donde se encuentra el modulo que lo importa y ascendiendo en la jerarquia de carpetas sucesivamente hasta llegar a la raiz.</p>
+<p>Si el modulo importado comienza con <code>./ o</code>/` Node lo buscara en la carpeta o archivo especificado por la ruta relativa oabsoluta.</p>
+<p>Si necesitas solo resolver el modulo y no ejecutarlo, puedes usar la funcion <code>require.resolve()</code> par modulos de CommondJS o la funcion <code>import.meta.resolve()</code> para modulos ES. Estas funciones no cargan el modulo, solo verifican si existen, si no, lanzan un error.</p>
+<h2 id="loading-modules">Loading Modules<a class="headerlink" href="#loading-modules" title="Permanent link">&para;</a></h2>
+<p>Una vez la ruta del modulo se resuelve, Node determinara el cotenido y determinara su tipo.</p>
+<p>Un modulo puede ser un modulo CommondJS on un modulo ES. Las extensiones de archivos permitidos son <code>.js</code> <code>.cjs</code> <code>.mjs</code>. Puede ser un unico archivo o un directorio con un archivo package.json que  especifique que archivos del directorio puede importar.</p>
+<p>Un archivo JSON tambien puede ser un modulo. Cuando importas un archivo JSON obtienes un objeto JavaScrip que representa esos datos en el archivo JSON.</p>
+<p><img alt="" src="../loadingModules.png" /></p>
+<blockquote>
+<p>La palabra clave <strong>with</strong> se usa para especificar el  atributo de <em>importacion de tipo</em> indica como se debe cargar un modulo en tiempo de ejecucion. Estandar para evitar que se ejecute codigo malicioso. tambien se puede utilizar con otro tipos de modulos. Por ejemplo un modulo "css" en un navegador.</p>
+</blockquote>
+<h2 id="scoping-modules">Scoping Modules<a class="headerlink" href="#scoping-modules" title="Permanent link">&para;</a></h2>
+<p>CommonJS es el sistema de módulos histórico utilizado por Node.js. En este modelo, cada archivo se trata como un módulo independiente que se ejecuta dentro de una función interna creada por el entorno. Esa función proporciona variables especiales como exports, require, module, __filename y __dirname, lo que permite que el código tenga un ámbito privado y que el desarrollador decida explícitamente qué parte del módulo quiere exponer. Los módulos se cargan dinámicamente durante la ejecución del programa, lo que significa que las dependencias se resuelven cuando el código llega al punto donde se solicita otro módulo.</p>
+<p><strong>Node envuelve tu archivo dentro de una función</strong>. Algo parecido a esto:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">exports</span><span class="p">,</span><span class="w"> </span><span class="nx">require</span><span class="p">,</span><span class="w"> </span><span class="nx">module</span><span class="p">,</span><span class="w"> </span><span class="nx">__filename</span><span class="p">,</span><span class="w"> </span><span class="nx">__dirname</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="c1">// TU CÓDIGO AQUÍ</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">});</span>
+</span></code></pre></div></p>
+<blockquote>
+<p>Estos cinco argumentos implícitos son (en orden): <strong>exports</strong>, <strong>require</strong>, <strong>module</strong>, ____filename__ y ____dirname__. Cuando los usas dentro de un módulo CommonJS, no estás usando una variable global, sino un argumento de la función envolvente implícita. Node unicamente devuelve <code>modules.export</code> Todo lo demás queda privado dentro del scope del <strong>wrapper</strong>. Esto permite encapsulación, que es una idea central de la ingeniería de software.</p>
+</blockquote>
+<p><img alt="" src="../arguments.png" /></p>
+<p>ECMAScript Modules es el sistema de módulos moderno y estandarizado del lenguaje JavaScript. A diferencia de CommonJS, <strong>no utiliza una función wrapper</strong> ni define variables como <strong>exports o require</strong>. En su lugar, ESM se basa en <strong>importaciones y exportaciones declarativas.</strong>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// math.mjs</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">suma</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">){</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="o">+</span><span class="nx">b</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">suma</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./math.mjs&quot;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">suma</span><span class="p">(</span><span class="mf">2</span><span class="p">,</span><span class="mf">3</span><span class="p">))</span>
+</span></code></pre></div></p>
+<h2 id="executing-modules">Executing Modules<a class="headerlink" href="#executing-modules" title="Permanent link">&para;</a></h2>
+<p>Este es el paso donde Node ejecutara el codigo en un modulo y finalizara sus dependencias y exportaciones. Una practica practica muy comun de codificar es colocar cualquier <strong>variable configurable</strong> que se use para inicializar o ejecutar una aplicacion en sus propios modulos. Un ejemplo de tales variables configurable son el PUERTO y el HOST en el que se ejecutara el servidor web. Crearemos un archivo config.cjs para alojar estas dos variables configurables. Este modulo tendra cinco argumentos implicitos.</p>
+<p>Como se puede ver el argumento <strong>exports</strong> comenzará como un objeto vacío.</p>
+<p><img alt="" src="../exportempty.png" /></p>
+<p>Para configurar la API del modulo  <em>config.cjs</em> definimos las propiedades en el <strong>objeto export</strong>. la spropiedades pueden ser valores estaticos o cualquier objerto de JavaScript (como una funcion, clase, promesa):</p>
+<p><img alt="" src="../defifile.png" /></p>
+<p>Ahora usamos las variables <strong>process.evn</strong> para personalizar la configuracion en diferentes entornos. Tambien se creo una funcion <strong>SERVER_URL</strong>  que recive como argumento un protocolo.</p>
+<p>Cuando importamos el modulo <em>config.cjs</em> la funcion <strong>require()</strong> devuelve el objeto <strong>exports</strong>. Ahora podemos decir que <em>index.js</em> depende de <em>config.cjs</em>. De ahí proviene el término «gestión de dependencias». En este caso, gestionamos las dependencias de un módulo y adaptamos la API de un módulo para utilizarla en otro.</p>
+<blockquote>
+<p><em>API de módulo (programación): Es lo que un módulo o librería expone para que otro código lo use, normalmente funciones, objetos o métodos. Es comunicación dentro del mismo programa. Por ejemplo, en Node.js lo que se exporta con exports o module.exports es la API del módulo.</em></p>
+<p><em>API de internet (Web API): Es un conjunto de endpoints accesibles por red (normalmente HTTP) que permite que diferentes aplicaciones se comuniquen entre sí. En lugar de funciones, se usan URLs y peticiones para enviar y recibir datos.</em></p>
+</blockquote>
+<p>Diferencia clave:
+<code>API de módulo</code> → comunicación entre partes de un mismo programa.
+<code>API web</code> → comunicación entre programas a través de internet.</p>
+<p><img alt="" src="../api.png" /></p>
+<p>El argumento <code>exports</code> en los módulos CommonJS es, en realidad, un alias de <code>module.exports</code>. Este último es lo que se devuelve cuando invocamos la función <code>require</code>.</p>
+<p>En algunos casos, es posible que necesites que el objeto de la API sea una función o una clase. En estos casos, tendrás que cambiar el valor de <code>module.exports</code> para definir tu API especial.</p>
+<p>Por ejemplo, supongamos que queremos que todas las propiedades de configuración sean el resultado de la ejecución de una función. Esto podría resultar útil para las pruebas, ya que podemos simular la función de configuración de forma diferente para cada prueba. </p>
+<p><img alt="" src="../fuctionExport.png" /></p>
+<p>Por lo tanto, para utilizar el valor de configuración en index.cjs, tendremos que invocar lo que obtenemos de la función <code>require</code>:</p>
+<p><img alt="" src="../functionRequire.png" /></p>
+<p>Este método suele resultar útil cuando se necesita utilizar el patrón de diseño de <em>«inyección de dependencias»</em>, es decir, cuando se inyectan algunos módulos en otros para ganar flexibilidad y hacer que los módulos sean más reutilizables.</p>
+<h2 id="caching-modules">Caching Modules<a class="headerlink" href="#caching-modules" title="Permanent link">&para;</a></h2>
+<p>Para enteder otro concepto de como Node trabaja con los modulos vamos repetir <strong>require</strong> varias veces en index.cjs</p>
+<p>Cuando ejecutemos index.cjs ¿cuántas veces aparecerá la línea «Loading config.cjs» ? La respuesta no es tres veces. Solo aparecerá una vez.</p>
+<p>Tanto los módulos CommonJS como los módulos ES en Node se almacenan en caché tras la primera llamada. Un módulo se ejecuta la primera vez que se importa; luego, cuando se vuelve a importar, Node lo carga desde la caché.
+<img alt="" src="../required.png" /></p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>La CLI de Node cuenta con numerosas opciones potentes que podemos controlar. Podemos pasarle argumentos y configurar variables de entorno antes de ejecutarla. Ambas opciones nos permiten pasar datos del entorno del sistema operativo a un proceso de Node en ejecución. El objeto <code>process</code> de Node actúa como puente.</p>
+<p>El modo REPL de Node es una buena forma de probar expresiones sencillas, explorar todo lo que se puede utilizar en Node y echar un vistazo rápido a la API de cualquier elemento, incluidos los módulos básicos, los módulos instalados e incluso los objetos que se instancian.</p>
+<p>Los módulos CommonJS en Node se envuelven implícitamente en una función y se les pasan cinco argumentos. Los módulos ES también tienen un ámbito privado.</p>
+<p>Utilizamos el objeto <code>exports</code> en los módulos CommonJS o las sentencias <code>export</code> en los módulos ES para definir la API de un módulo. Los módulos que dependen de otros módulos utilizan la función <code>require</code> o las sentencias <code>import</code> para acceder a la API de una dependencia.</p>
+<p>Node gestiona una caché para todos los módulos. Para localizar un módulo, Node sigue un conjunto de reglas predefinidas en función de la ruta del módulo. Una ruta puede ser relativa, absoluta o simplemente un nombre. En este último caso, Node busca el módulo en las carpetas node_modules.</p>
+<p>En el próximo capítulo, analizaremos en profundidad cómo gestiona Node las operaciones asíncronas y aprenderemos sobre la naturaleza basada en eventos de los módulos de Node.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../cap1/nodeFunfamentals/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NODE FUNDAMENTALS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                NODE FUNDAMENTALS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../cap3/AsynchronyandEvents/" class="md-footer__link md-footer__link--next" aria-label="Next: ASYNCHRONY AND EVENTS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                ASYNCHRONY AND EVENTS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>
