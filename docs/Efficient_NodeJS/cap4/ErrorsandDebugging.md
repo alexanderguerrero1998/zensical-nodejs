@@ -28,28 +28,12 @@ function calculateSquareRoot(number) {
 calculateSquareRoot(-1);
 // Error: Cannot calculate square root of negative number
 ```
-<<<<<<< HEAD
 
 Si se produce un error, la operación actual se detendrá por completo. Al producirse cualquier error en Node, el proceso se bloqueará y finalizará. Esto es lo que sucede al ejecutar este código:
 
 ![](thowingerr.png)
 
 Esto puede parecer incorrecto. ¿Por qué bloquear una aplicación completa debido a un simple uso erróneo de una sola función?
-
-
-Verificar la informacion que ingresa a la aplicacion por medio de lanzamiento de errores es vital  para la integridada de la aplicacion. Ignorar los errores pueden generar vulnerabilidades de seguridad y ser utilizados como puntos de ataques.
-
-En tus módulos principales, siempre debes generar errores cuando te encuentres en una condición que indique un problema.
-=======
-**Lanzar un error** hará que la **operación actual se detenga completamente**. Cuando **lanzas errores en Node**, el **proceso se colapsará y saldrá**. 
-
-Aquí está lo que sucede cuando **ejecutamos este código**:
-
-![](thowingerr.png)
-
-Esto **puede sentirse mal**. ¿Por qué **colapsar toda una aplicación** por un **simple uso incorrecto de una sola función**?
-
->>>>>>> 5f0563c (update files)
 
 La respuesta simple aquí es que es un **problema que no debería ser ignorado** y que **debe manejarse de alguna forma**.  **Ignorar errores** podría llevar a **consecuencias no deseadas** y compromete la **integridad de la aplicación**. Una función que se llama con la **entrada incorrecta** podría tener **datos incorrectos propagados** a través de toda la aplicación. **Eso realmente no es bueno**. En algunos casos, incluso podría causar una **vulnerabilidad de seguridad**. En este simple ejemplo, una **entrada no validada** podría ser el camino para un **ataque explotador** contra la aplicación.
 
@@ -60,6 +44,7 @@ Ahora, los **módulos que usan tus módulos principales** podrían hacer una **e
 Siempre que escribas código que **use otro código** (como llamar a una función), debes **siempre recordar** que ese otro código **podría lanzar errores**. Como **usuario de ese código**, puedes decidir **qué hacer con esos errores**. Lo haces **capturando el error** y **manejándolo de alguna forma**.
 
 Por ejemplo, supongamos que decidiste que cuando `calculateSquareRoot` se llame con un **número negativo**, solo debe **imprimir una advertencia**, no salir de toda la aplicación. **Así es como lo haces**:
+
 ```js linenums="1"
 try {
  let result = calculateSquareRoot(-1);
@@ -128,6 +113,8 @@ El problema es que la **excepción manejada** aquí no es solo el error por un *
 
 
 Para hacer eso, necesitamos una forma de **manejar el error condicionalmente**. Necesitamos **verificar el tipo de un error**. Hablemos de **los tipos de errores** a continuación.
+
+---
 
 ## Types of Errors
 
@@ -243,7 +230,7 @@ class ValidationError extends Error {
 // To use:
 // throw new ValidationError('Some message', 'some_field');
 ```
-Esta clase ValidationError personalizada se puede usar para lanzar un error específico cuando estes validando algo. Por ejemplo, si necesita asegurarse de que un objeto de usuario tenga un campo de nombre de usuario, puede generar este error si no lo tiene:
+Esta clase **ValidationError** personalizada se puede usar para lanzar un error específico cuando estes validando algo. Por ejemplo, si necesita asegurarse de que un objeto de usuario tenga un campo de nombre de usuario, puede generar este error si no lo tiene:
 
 ```js linenums="1"
 function validateUser(user) {
@@ -306,6 +293,8 @@ Observe cómo en este ejemplo, después de crear la excepción para el error con
     Hay **muchos otros métodos de afirmación** para varias condiciones. Consulta la **página de documentación de Node** para el módulo `assert`. 
 
     Veremos ejemplos de cómo usar este módulo en el **Capítulo 8**.
+
+---
 
 ## Layered Error Management
 
@@ -411,4 +400,106 @@ El **reenvío de errores** puede usarse para mantener un **flujo limpio y predec
 
 Sin embargo, **todas las partes de la aplicación** necesitan **manejar los errores o reenviarlos**, del mismo modo, sin reenvío de errores, cada parte de la aplicacion necesita **manejarlos o lanzarlos**. La **gestión de errores** debe ser un **estilo que se aplique en toda la aplicación**.
 
-## Debugging in Node
+---
+
+## Depuración en Node
+
+Cuando un problema de código necesita ser investigado, hay múltiples formas de hacer la depuración en Node. La forma más simple es registrar información alrededor del problema para entender lo que está sucediendo. Para empezar, se pueden usar simples declaraciones `console.log` para descubrir exactamente dónde está ocurriendo el problema (en caso de que el stack del error no haya sido útil):
+
+```js linenums="1"
+console.log('Iniciando aplicación...');
+app.init();
+console.log('Aplicación inicializada correctamente.');
+```
+
+Si no ves el segundo mensaje de log, significa que `app.init()` tiene un problema. Se puede usar más logging para imprimir datos, verificar expectativas y rastrear cómo cambian las cosas. Es una forma simple pero poderosa para identificar rápidamente problemas en un entorno de desarrollo.
+
+Para una depuración más completa, Node tiene una utilidad de depuración incorporada en línea de comandos que se puede iniciar usando el argumento `inspect`:
+
+```bash linenums="1"
+$ node inspect script.js
+```
+
+Este comando inicia tu aplicación Node con un inspector adjunto, permitiéndote pausar la ejecución, avanzar paso a paso por el código e inspeccionar variables en tiempo de ejecución. Puedes establecer puntos de interrupción directamente desde tu código agregando la declaración `debugger;`, que hará que la ejecución se pause cada vez que se alcance ese punto.
+
+El depurador incorporado es ciertamente útil, pero es limitado. Hay una opción más potente y completa. Puedes usar las DevTools del navegador Chrome para depurar aplicaciones Node tan fácilmente como depuras aplicaciones web. Todo lo que tienes que hacer es iniciar el proceso Node con la bandera `--inspect`:
+
+```bash linenums="1"
+$ node --inspect script.js
+```
+
+También puedes usar la bandera `--inspect-brk` para pausar al inicio del script depurado. Después de eso, puedes conectarte al proceso Node en ejecución usando la página `chrome://inspect` de Chrome (ver Figura 4-2). El proceso Node en ejecución se listará allí, y cuando hagas clic en él, tendrás todo el poder de DevTools para usar en tu código Node: el depurador, el perfil de rendimiento, el inspector de memoria y la consola en tiempo real.
+
+![](ChromeDevTools.png)
+
+Node también tiene un perfilador de rendimiento incorporado que puedes ejecutar con la bandera `--prof`. Este muestrea la pila a intervalos regulares durante la ejecución del programa y registra los resultados de estas muestras, junto con eventos importantes de optimización.
+
+Adicionalmente, Node tiene múltiples banderas de tracing que se pueden usar para imprimir información adicional en los stacks de error. Puedes verlas junto con lo que hacen en la salida de `node --help`:
+
+```bash linenums="1"
+$ node --help | grep trace
+ --enable-source-maps   Soporte de Source Map V3 para stack traces
+ --trace-deprecation    muestra stack traces en deprecaciones
+ --trace-event-categories=...   lista separada por comas de eventos de trace
+ --trace-event-file-pattern=...   patrón de archivo para datos de trace-events
+ --trace-exit           muestra stack trace cuando un entorno...
+ --trace-promises       muestra stack traces en promesas...
+ --trace-sigint         habilita imprimir stacktrace de JavaScript...
+ --trace-sync-io        muestra stack trace cuando se usa IO síncrono...
+ --trace-tls            imprime información de trace de paquetes TLS...
+ --trace-uncaught       muestra stack traces para `throw`...
+ --trace-warnings       muestra stack traces para advertencias...
+```
+
+!!! info "Beneficio de nombres descriptivos"
+
+    Otro beneficio de usar nombres claros y descriptivos para los objetos en tu código (especialmente funciones) es que ayuda con la depuración. Los objetos bien nombrados en los stack traces y registros de error facilitan la identificación de dónde y por qué podría estar ocurriendo un problema.
+
+---
+
+## Medidas Preventivas
+
+Si bien lidiar con errores en general es inevitable, hay algunas herramientas y prácticas que puedes adoptar para reducir las posibilidades de tener que enfrentar errores desconocidos.
+
+#### Herramientas de Calidad de Código
+
+Cuando escribes una función que recibe entradas, lo primero que debes hacer es asegurarte de que las entradas sean lo que esperas que sean. ¿Son del tipo correcto? ¿Están en el formato correcto? ¿Están en el rango adecuado? Lanza errores si no lo están.
+
+Usar TypeScript con Node puede al principio sentirse como hacer las cosas mucho más complicadas, pero en realidad, los beneficios que obtienes son mucho mayores que los pequeños inconvenientes. TypeScript señalará problemas en tu código antes de que el código siquiera se ejecute. ¿Pasaste el tipo de argumento incorrecto a una función? ¿Cometiste un error tipográfico al acceder a una propiedad de un objeto? ¿Llamaste a un método que no existe? TypeScript señalará todos estos problemas, y muchos más, de inmediato. TypeScript también puede ayudarte a escribir código de gestión de errores de una manera mucho mejor.
+
+El linter ESLint también puede ayudar a encontrar problemas en tu código antes de que se ejecute. Puedes usarlo para identificar patrones que conducen a bugs, y tiene muchas otras características para hacer cumplir el estilo de código y las mejores prácticas. ESLint también tiene muchos plugins poderosos que pueden extender su alcance y hacerlo funcionar con muchas bibliotecas y frameworks.
+
+Ampliaremos más sobre TypeScript y ESLint en el Capítulo 10.
+
+#### Objetos Inmutables
+
+Un objeto verdaderamente inmutable no puede ser cambiado una vez que es creado. Cualquier actualización debe crear nuevos objetos en su lugar. Usar estructuras de datos inmutables (de una biblioteca como Immutable.js, por ejemplo) te ayuda a evitar una tonelada de problemas potenciales que provienen de cambiar datos sin intención. Incluso conceptos simples de inmutabilidad en JavaScript mismo, como usar `const` en lugar de `let`, congelar objetos y usar propiedades de solo lectura, son métodos muy útiles para evitar muchos problemas.
+
+#### Testing
+
+Todo el código tiene que ser probado de una forma u otra. Probamos el código manualmente todo el tiempo, pero no podemos probar manualmente todos los casos después de cada cambio. Un pequeño cambio en cualquier parte podría causar bugs en lugares que nunca esperarías. Es por eso que automatizar las pruebas escribiendo código que prueba tu código es realmente importante.
+
+Escribir tests hoy en Node es más fácil que nunca. Node tiene módulos incorporados para testing y aserciones. El módulo `node:test` proporciona una forma de organizar tus tests y describirlos. El módulo `node:assert` proporciona métodos de aserción para implementar la lógica de los tests y lanzar errores de aserción cuando las expectativas no se cumplen.
+
+El testing de código en Node es el tema del Capítulo 8.
+
+#### Revisiones de Código
+
+Esto no necesita decirse, pero un proceso sólido de revisar todo el código en un proyecto ayuda enormemente a encontrar problemas temprano y a encontrar mejores formas de hacer las cosas. Yo diría que cada línea de código debería ser revisada por al menos dos desarrolladores.
+
+## Resumen
+
+Muchos problemas pueden ocurrir durante la ejecución de un programa Node. Algunos problemas están fuera de nuestro control, mientras que otros pueden y deben ser manejados. Los problemas en Node se presentan con objetos de error que son incorporados o personalizados por los desarrolladores. Los módulos principales lanzan estos objetos de error, y los módulos que usan módulos principales pueden capturar objetos de error y manejarlos si así lo deciden.
+
+Cuando ocurre un error, un proceso Node se bloqueará y finalizará. Esto es algo bueno porque no quieres que un programa continúe ejecutándose en un estado desconocido. Sin embargo, si se espera un error, el programa no necesita bloquearse. Una excepción es básicamente un error para el cual hicimos una excepción para no detener todo el programa.
+
+Hay varios tipos de errores en Node. Tenemos errores estándar de JavaScript, errores del sistema, errores personalizados y errores de aserción.
+
+En una estructura de aplicación en capas, los errores necesitan propagarse entre las capas. Esto se puede hacer usando el método `throw`, o con un reenvío más estructurado de objetos de error.
+
+Se pueden usar mensajes de log simples para hacer depuración básica en Node. Node tiene una utilidad de depuración incorporada en línea de comandos, y Chrome DevTools también se puede usar para una depuración más completa de aplicaciones Node.
+
+Hay algunas herramientas y prácticas que se pueden usar para reducir las posibilidades de tener que lidiar con errores. Herramientas como TypeScript y ESLint son muy poderosas en ese dominio. Validar entradas, escribir tests, usar estructuras de datos inmutables y realizar revisiones de código son buenas prácticas a considerar para ese propósito también.
+
+En el próximo capítulo, hablemos sobre la gestión de paquetes en Node y aprendamos más sobre las características del gestor de paquetes de Node.
+

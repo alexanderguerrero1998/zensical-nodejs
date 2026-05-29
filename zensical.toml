@@ -21,6 +21,13 @@ nav = [
             { "SCRIPTS AND MODULES" = "Efficient_NodeJS/cap2/ScriptsandModules.md" },
             { "ASYNCHRONY AND EVENTS" = "Efficient_NodeJS/cap3/AsynchronyandEvents.md" },
             { "ERRORS AND DEBUGGING" = "Efficient_NodeJS/cap4/ErrorsandDebugging.md" },
+            { "PACKAGE MANAGEMENT" = "Efficient_NodeJS/cap5/PackageManagement.md" },
+            { "STREAM" = "Efficient_NodeJS/cap6/Streams.md" },
+            { "CHILD PROCESSES" = "Efficient_NodeJS/cap7/ChildProcesses.md" },
+            { "TESTING NODE" = "Efficient_NodeJS/cap8/TestingNode.md" },
+            { "SCALING NODE" = "Efficient_NodeJS/cap9/ScalingNode.md" },
+            { "PRACTICAL NODE" = "Efficient_NodeJS/cap10/PracticalNode.md" },
+            
           ]
         },{ "OTRO LIBRO" = [ { "NODE FUNDAMENTALS" = "Efficient_NodeJS/cap1/nodeFunfamentals.md" },]}
   

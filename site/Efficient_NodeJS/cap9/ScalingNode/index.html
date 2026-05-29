@@ -1,0 +1,1619 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A new project generated from the default template project.">
+      
+      
+        <meta name="author" content="<Alexander Guerrero>">
+      
+      
+      
+        <link rel="prev" href="../../cap8/TestingNode/">
+      
+      
+        <link rel="next" href="../../cap10/PracticalNode/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>Escalando Node - Learning Node JS</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#escalando-node" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning Node JS" class="md-header__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Node JS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Escalando Node
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning Node JS" class="md-nav__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Learning Node JS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFFICIENT NODEJS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EFFICIENT NODEJS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap2/ScriptsandModules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCRIPTS AND MODULES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap3/AsynchronyandEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ASYNCHRONY AND EVENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap4/ErrorsandDebugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERRORS AND DEBUGGING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap5/PackageManagement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PACKAGE MANAGEMENT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap6/Streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STREAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap7/ChildProcesses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CHILD PROCESSES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap8/TestingNode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TESTING NODE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCALING NODE
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCALING NODE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estrategias-de-escalabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Estrategias de Escalabilidad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-modulo-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El Módulo Cluster
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procesos-primario-y-trabajador" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Procesos Primario y Trabajador
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transmitiendo-mensajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transmitiendo Mensajes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incrementando-la-disponibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incrementando la Disponibilidad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinicios-sin-tiempo-de-inactividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reinicios Sin Tiempo de Inactividad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejando-el-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Manejando el Estado
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestores-de-procesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gestores de Procesos
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumen
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap10/PracticalNode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRACTICAL NODE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estrategias-de-escalabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Estrategias de Escalabilidad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-modulo-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El Módulo Cluster
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procesos-primario-y-trabajador" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Procesos Primario y Trabajador
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transmitiendo-mensajes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Transmitiendo Mensajes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#incrementando-la-disponibilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Incrementando la Disponibilidad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinicios-sin-tiempo-de-inactividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reinicios Sin Tiempo de Inactividad
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejando-el-estado" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Manejando el Estado
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestores-de-procesos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gestores de Procesos
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumen
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../cap1/nodeFunfamentals/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    EFFICIENT NODEJS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="escalando-node">Escalando Node<a class="headerlink" href="#escalando-node" title="Permanent link">&para;</a></h1>
+<p>Escalar una aplicación se trata de hacerla capaz de manejar más trabajo sin ralentizarse ni bloquearse. Puedes escalar cualquier aplicación dando a sus servidores más memoria o potencia de CPU, o agregando más servidores.</p>
+<p>Para Node, con su modelo no bloqueante y basado en eventos, la escalabilidad está incorporada en el núcleo del entorno de ejecución. Una aplicación Node debería estar compuesta de múltiples nodos pequeños y distribuidos. Puedes ejecutar el mismo proceso Node en múltiples núcleos de CPU (o múltiples servidores) y luego balancear la carga de las solicitudes entre ellos. Node tiene un módulo incorporado para ayudar con eso.</p>
+<p>En este capítulo, aprenderemos todo sobre el módulo <code>node:cluster</code> de Node, que puede ayudar a mejorar el rendimiento de carga de trabajo de un proceso Node haciendo que utilice toda la potencia de CPU de un servidor. También mejora la disponibilidad y el tiempo de actividad de los servidores.</p>
+<hr />
+<h2 id="estrategias-de-escalabilidad">Estrategias de Escalabilidad<a class="headerlink" href="#estrategias-de-escalabilidad" title="Permanent link">&para;</a></h2>
+<p>Si bien hacer que una aplicación sea capaz de manejar más trabajo es la razón más popular para escalarlas, hay más razones. Las aplicaciones también se escalan para aumentar su disponibilidad y su tolerancia a fallos.</p>
+<p>Si tienes la tarea de escalar una aplicación existente, tus opciones son escalarla <strong>verticalmente</strong> dándole más potencia a sus servidores (memoria y CPU) o <strong>horizontalmente</strong> agregando más servidores. Sin embargo, si estás pensando en escalar mientras construyes tus aplicaciones (que es lo que deberías hacer), necesitas entender las siguientes tres estrategias y tomar decisiones de escalabilidad basadas en ese entendimiento y el uso proyectado de las aplicaciones a lo largo del tiempo:</p>
+<dl>
+<dt><strong>Clonación</strong></dt>
+<dd>Lo más fácil de hacer para escalar una aplicación grande es clonarla múltiples veces y hacer que cada instancia clonada maneje parte de la carga de trabajo (con un balanceador de carga, por ejemplo). Esto no cuesta mucho en términos de tiempo de desarrollo y es altamente efectivo. Esta estrategia es el mínimo que deberías hacer, y Node tiene el módulo incorporado <code>node:cluster</code> para facilitarte la implementación de la estrategia de clonación en un solo servidor.</dd>
+<dt><strong>Descomposición</strong></dt>
+<dd>También podemos escalar una aplicación descomponiéndola según funcionalidades y servicios. Esto significa tener múltiples aplicaciones con diferentes bases de código y a veces con sus propias bases de datos y UIs dedicadas. Esta estrategia se asocia comúnmente con el término <strong>microservicio</strong>, donde <em>micro</em> indica que esos servicios deberían ser lo más pequeños posible (en realidad, el tamaño del servicio no es lo importante sino la aplicación de un <strong>acoplamiento débil</strong> y una <strong>alta cohesión</strong> entre servicios). La implementación de esta estrategia a menudo no es fácil y podría resultar en problemas inesperados a largo plazo, pero cuando se hace correctamente, las ventajas son grandes.</dd>
+<dt><strong>División (Splitting)</strong></dt>
+<dd>También podemos dividir la aplicación en múltiples instancias donde cada instancia es responsable de solo una parte de los datos de la aplicación. Esta estrategia a menudo se denomina <strong>particionamiento horizontal</strong> o <strong>sharding</strong> en bases de datos. La partición de datos requiere un paso de búsqueda antes de cada operación para determinar qué instancia de la aplicación usar. Por ejemplo, tal vez queramos particionar nuestros usuarios según su país o idioma. Necesitamos hacer una búsqueda de esa información primero.</dd>
+</dl>
+<p>Las aplicaciones pueden elegir una o más de estas estrategias según sus necesidades actuales y proyectadas.</p>
+<hr />
+<h2 id="el-modulo-cluster">El Módulo Cluster<a class="headerlink" href="#el-modulo-cluster" title="Permanent link">&para;</a></h2>
+<p>El módulo <code>node:cluster</code> de Node se puede usar para ejecutar múltiples instancias del mismo proceso Node en diferentes núcleos de CPU y balancear la carga de trabajo entre ellas. Utiliza el método <code>child_process.fork</code> internamente para darnos una forma fácil de bifurcar un proceso de aplicación tantas veces como necesitemos. En una máquina servidor, podemos bifurcar un proceso tantas veces como núcleos de CPU tenga esa máquina. El módulo <code>node:cluster</code> puede entonces encargarse de la gestión de estas bifurcaciones, balancear la carga de todas las solicitudes que llegan a la aplicación entre todos los procesos bifurcados y recargar cualquier bifurcación cuando sea necesario.</p>
+<p>El módulo <code>node:cluster</code> es la ayuda de Node para que implementemos la estrategia de escalabilidad de <strong>clonación</strong> verticalmente en un servidor. Cuando tienes un servidor grande con muchos recursos o cuando es más fácil y económico agregar más recursos a un servidor en lugar de agregar nuevos servidores, el módulo <code>node:cluster</code> es una excelente opción para una implementación realmente rápida de la estrategia de clonación.</p>
+<p>Incluso los servidores pequeños generalmente tienen múltiples núcleos, e incluso si no estás preocupado por la carga en tu servidor Node, deberías usar el módulo <code>node:cluster</code> de todas formas para aumentar la disponibilidad de tu servidor y la tolerancia a fallos. Es un paso simple con grandes ventajas.</p>
+<p>Aprovechar lo que el módulo <code>node:cluster</code> tiene para ofrecer es simple. Creas un <strong>proceso primario</strong> que bifurca una serie de <strong>procesos trabajadores (workers)</strong> y los gestiona. Cada proceso trabajador representa una instancia de la aplicación. Todas las solicitudes entrantes son manejadas por el proceso primario, que es el que decide qué proceso trabajador debe manejar una solicitud entrante.</p>
+<p>El trabajo del proceso primario es simple. En realidad, solo usa un algoritmo <strong>round-robin</strong> para elegir un proceso trabajador. Esto está habilitado por defecto en la mayoría de las plataformas, pero se puede modificar para que el balanceo de carga se maneje de manera diferente (por ejemplo, por el SO o con lógica personalizada).</p>
+<p>El algoritmo <strong>round-robin</strong> distribuye la carga uniformemente entre todos los procesos trabajadores disponibles de forma rotativa. La primera solicitud se reenvía al primer proceso trabajador, la segunda al siguiente proceso trabajador, y así sucesivamente. Cuando se llega al final de la lista de procesos trabajadores, el algoritmo comienza de nuevo desde el principio.</p>
+<p>Round-robin es uno de los algoritmos de balanceo de carga más simples, pero hay varios otros algoritmos que se pueden usar para el balanceo de carga:</p>
+<dl>
+<dt><strong>Menos conexiones (Least connections)</strong></dt>
+<dd>El proceso primario envía una solicitud entrante al trabajador con menos conexiones activas. Esto ayuda a distribuir la carga de trabajo de manera más uniforme.</dd>
+<dt><strong>Round-robin ponderado (Weighted round-robin)</strong></dt>
+<dd>A los trabajadores se les asignan diferentes pesos, y aquellos con pesos más altos manejan más solicitudes entrantes.</dd>
+<dt><strong>Aleatorio (Random)</strong></dt>
+<dd>El proceso primario elige un trabajador aleatoriamente para manejar una solicitud entrante.</dd>
+<dt><strong>Hash de IP (IP hash)</strong></dt>
+<dd>El proceso primario usa la IP del cliente que realiza una solicitud para determinar qué trabajador debe manejar esa solicitud.</dd>
+<dt><strong>Hash de URL (URL hash)</strong></dt>
+<dd>El proceso primario usa la URL solicitada para determinar qué trabajadores deben manejar esa solicitud.</dd>
+</dl>
+<p>Cada algoritmo de enrutamiento tiene sus propios casos de uso, beneficios y desventajas. Elegir un algoritmo depende de los requisitos de la aplicación y los entornos en los que se ejecuta.</p>
+<hr />
+<h2 id="procesos-primario-y-trabajador">Procesos Primario y Trabajador<a class="headerlink" href="#procesos-primario-y-trabajador" title="Permanent link">&para;</a></h2>
+<p>Para ver el módulo <code>node:cluster</code> en acción, usemos este servidor HTTP básico. Crea un archivo <code>slow-server.js</code> para este código:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node:http&#39;</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e8</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="c1">// Simular trabajo de CPU:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Process </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Nota cómo agregué un bucle <code>for</code> vacío para simular algo de trabajo de CPU antes de responder.</p>
+<p>Con el módulo <code>node:cluster</code>, estaremos trabajando con múltiples procesos, por lo que estoy registrando el ID del proceso (con <code>process.pid</code>) cuando el servidor HTTP se inicia, para ver qué procesos se están creando.</p>
+<p>Antes de crear un cluster para este servidor y bifurcar muchos trabajadores para él, hagamos una prueba de carga simple. La prueba de carga consiste básicamente en enviar muchas solicitudes al servidor e informar cuánta carga fue capaz de manejar.</p>
+<p>Hay muchas herramientas que puedes usar para realizar pruebas de carga, desde básicas como ApacheBench (AB) hasta completas como Artillery. Para mantener las cosas simples para nuestro ejemplo, usaremos el paquete npm <code>loadtest</code>.</p>
+<p>Después de instalar el paquete, ejecuta el servidor HTTP y luego ejecuta el comando <code>loadtest</code> (en una terminal diferente) para realizar la prueba de carga:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>node<span class="w"> </span>slow-server.js
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>$<span class="w"> </span>npx<span class="w"> </span>loadtest<span class="w"> </span>http://localhost:3000/
+</span></code></pre></div></td></tr></table></div>
+<p>La Figura 9-1 muestra el resumen de rendimiento que obtuve cuando hice la prueba en mi computadora.</p>
+<p>El servidor de un solo nodo fue capaz de manejar aproximadamente <strong>15 solicitudes por segundo</strong> en mi computadora. Este resultado será diferente en diferentes computadoras.</p>
+<p><img alt="" src="../singlenodeserver.png" /></p>
+<p>Ahora que tenemos un punto de referencia para un solo nodo, veamos qué diferencia hará el módulo <code>node:cluster</code> para este rendimiento.</p>
+<p>Aquí está el código (agregado a un archivo <code>cluster.js</code>) que necesitamos para crear un proceso primario con el módulo <code>node:cluster</code> y hacer que ese proceso bifurque muchos procesos trabajadores para ejecutar el mismo servidor HTTP:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">cluster</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node:cluster&#39;</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node:os&#39;</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">cluster</span><span class="p">.</span><span class="nx">isPrimary</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">availableParallelism</span><span class="p">();</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Bifurcando para </span><span class="si">${</span><span class="nx">cpus</span><span class="si">}</span><span class="sb"> CPUs`</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">cpus</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="k">import</span><span class="p">(</span><span class="s1">&#39;./slow-server.js&#39;</span><span class="p">);</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Primero importamos tanto el módulo <code>node:cluster</code> como el módulo <code>node:os</code>. Usamos el módulo <code>node:os</code> para descubrir cuántos procesos paralelos podemos ejecutar usando la función <code>availableParallelism</code>. Dependiendo del servidor donde se ejecute el código, esta función devolverá un número entre uno y el número máximo de núcleos de CPU disponibles en ese servidor (<code>os.cpus().length</code>). El plan es bifurcar un proceso trabajador por cada núcleo de CPU disponible.</p>
+<p>El módulo <code>node:cluster</code> nos da la práctica bandera booleana <code>isPrimary</code> para determinar si este archivo <code>cluster.js</code> se está cargando como un proceso primario. La primera vez que ejecutamos este archivo, estaremos ejecutando el proceso primario, y esa bandera <code>isPrimary</code> se establecerá en <code>true</code>. En este caso, podemos instruir al proceso primario para que bifurque nuestro servidor tantas veces como núcleos de CPU tengamos usando el método <code>cluster.fork</code> con un bucle sobre el número de CPUs que tiene el servidor. Esto hace que el cluster aproveche toda la potencia de procesamiento disponible.</p>
+<p>Cuando la línea <code>cluster.fork</code> se ejecuta desde el proceso primario, el archivo actual, <code>cluster.js</code>, se ejecuta de nuevo, pero esta vez en modo trabajador con la bandera <code>isPrimary</code> establecida en <code>false</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>En realidad, hay otra bandera establecida en <code>true</code> en este caso (la bandera <code>isWorker</code>) si necesitas usarla.</p>
+</div>
+<p>Cuando la aplicación se ejecuta como un trabajador, puede comenzar a hacer el trabajo real. Aquí es donde necesitamos definir nuestra lógica de servidor, que, para este ejemplo, podemos hacer importando el archivo <code>slow-server.js</code> que ya tenemos.</p>
+<p>Eso es básicamente todo. Así de fácil es aprovechar toda la potencia de procesamiento en un servidor. Para probar el cluster, ejecuta el archivo <code>cluster.js</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$<span class="w"> </span>node<span class="w"> </span>cluster.js
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>Forking<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>CPUs
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>Process<span class="w"> </span><span class="m">15601</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>Process<span class="w"> </span><span class="m">15602</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>Process<span class="w"> </span><span class="m">15606</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>Process<span class="w"> </span><span class="m">15607</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>Process<span class="w"> </span><span class="m">15604</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>Process<span class="w"> </span><span class="m">15605</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>Process<span class="w"> </span><span class="m">15603</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>Process<span class="w"> </span><span class="m">15609</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>Process<span class="w"> </span><span class="m">15610</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>Process<span class="w"> </span><span class="m">15608</span>
+</span></code></pre></div></td></tr></table></div>
+<p>La computadora con la que probé tenía 10 núcleos, por lo que el bucle <code>for</code> bifurcó 10 procesos trabajadores. Es importante entender que estas bifurcaciones son procesos Node completamente diferentes. Cada proceso trabajador bifurcado tendrá su propio espacio de memoria y event loop.</p>
+<p>Cuando este servidor recibe múltiples solicitudes, gracias al balanceo de carga incorporado del módulo <code>node:cluster</code>, las solicitudes serán manejadas por diferentes procesos trabajadores con diferentes IDs de proceso. Los trabajadores no serán rotados exactamente en secuencia porque el módulo <code>node:cluster</code> realiza algunas optimizaciones al elegir el siguiente trabajador, pero la carga se distribuirá de alguna manera entre los diferentes procesos trabajadores.</p>
+<p>Ahora, usemos el mismo comando <code>loadtest</code> para medir el rendimiento de este cluster, como se muestra en la Figura 9-2.</p>
+<p><img alt="" src="../servercluter.png" /></p>
+<p>¡La misma computadora que manejó solo 16 solicitudes por segundo con un solo proceso ahora es capaz de manejar <strong>123 solicitudes por segundo</strong>! Esto es un aumento de más de siete veces en el rendimiento, y todo lo que tuvimos que hacer para que esto sucediera fue agregar algunas líneas simples de código.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>No tuvimos que ejecutar los procesos trabajadores en diferentes puertos. El módulo <code>node:cluster</code> se encarga de hacer que los procesos trabajadores compartan puertos.</p>
+</div>
+<hr />
+<h2 id="transmitiendo-mensajes">Transmitiendo Mensajes<a class="headerlink" href="#transmitiendo-mensajes" title="Permanent link">&para;</a></h2>
+<p>La comunicación entre el proceso primario y los trabajadores es simple porque internamente el módulo <code>node:cluster</code> está usando la API <code>child_process.fork</code>, lo que significa que también tenemos canales IPC disponibles entre el proceso primario y cada proceso trabajador.</p>
+<p>Podemos acceder a la lista de objetos trabajadores usando <code>cluster.workers</code>, que es un objeto que contiene una referencia a todos los trabajadores y se puede usar para leer información sobre estos trabajadores. Dado que los canales de comunicación entre el proceso primario y todos los trabajadores ya están establecidos, para transmitir un mensaje a todos los trabajadores podemos usar un bucle simple sobre ellos y usar el método <code>send</code> en cada uno:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">cluster</span><span class="p">.</span><span class="nx">workers</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">worker</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="nx">worker</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`Hola Trabajador </span><span class="si">${</span><span class="nx">worker</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<p>El método <code>Object.values</code> se usa aquí para obtener un array de todos los trabajadores del objeto <code>cluster.workers</code>. Luego, para cada trabajador, usamos la función <code>send</code> para enviar cualquier valor que queramos. En un archivo de trabajador — <code>slow-server.js</code>, en nuestro ejemplo — para leer un mensaje recibido de este proceso primario, podemos registrar un manejador para el evento <code>message</code> en el objeto <code>process</code>. Aquí hay un ejemplo:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Mensaje del primario: </span><span class="si">${</span><span class="nx">msg</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<p>La Figura 9-3 muestra lo que veo cuando pruebo estas dos adiciones al ejemplo de <code>cluster.js</code>/<code>slow-server.js</code>. Agregué un <code>setTimeout</code> alrededor del envío para asegurarme de que todas las bifurcaciones estén hechas antes de enviar.</p>
+<p><img alt="" src="../Messagesbetween.png" /></p>
+<p>Cada proceso trabajador recibió un mensaje del proceso primario.</p>
+<p>Hagamos que este ejemplo de comunicación sea un poco más práctico. Digamos que necesitamos que nuestro servicio HTTP responda con el número de usuarios que tenemos en la base de datos. Para mantener las cosas simples, podemos usar una función falsa para reemplazar la lógica de conteo de usuarios de la base de datos:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">// Doble falso</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">dbUsersCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="p">})();</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Esta función simplemente devuelve 2 la primera vez que se llama, luego duplica su valor devuelto en cada llamada subsiguiente.</p>
+<p>Esto es solo para pruebas simplificadas, pero dado que el escenario real aquí es que la función hará una solicitud a la base de datos, necesitamos evitar hacer múltiples solicitudes por los múltiples trabajadores que tenemos. Podemos usar algún tipo de caché en los procesos trabajadores y actualizar la caché después de un cierto período de tiempo (digamos 60 segundos). Esto es mejor, pero los 10 trabajadores aún estarían haciendo 10 solicitudes a la base de datos cada 60 segundos.</p>
+<p>¿No sería genial si otro proceso hiciera las solicitudes a la base de datos y compartiera el conteo con todos los trabajadores cada 60 segundos? ¡Aquí es donde comenzamos a combinar la estrategia de <strong>clonación</strong> con la estrategia de <strong>descomposición</strong>!</p>
+<p>Para simplificar, hagamos que el proceso primario realice la solicitud para contar usuarios en la base de datos (idealmente, otra entidad debería hacer eso). Haremos la llamada a <code>dbUsersCount</code> en <code>cluster.js</code> y luego usaremos un bucle <code>for</code> para transmitir el valor del conteo a todos los trabajadores cada 60 segundos.</p>
+<p>Así es como cambié el archivo <code>cluster.js</code> para implementar eso:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">// En la rama cluster.isPrimary:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">dbUsersCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">count</span><span class="p">;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="p">})();</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">updateWorkers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">usersCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dbUsersCount</span><span class="p">();</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">  </span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">cluster</span><span class="p">.</span><span class="nx">workers</span><span class="p">).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">worker</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">    </span><span class="nx">worker</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span><span class="w"> </span><span class="nx">usersCount</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="p">};</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="nx">updateWorkers</span><span class="p">();</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="nx">setInterval</span><span class="p">(</span><span class="nx">updateWorkers</span><span class="p">,</span><span class="w"> </span><span class="mf">60</span><span class="nx">_000</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Aquí estamos invocando <code>updateWorkers</code> por primera vez y luego invocándolo cada 60 segundos usando un <code>setInterval</code>. De esta manera, cada 60 segundos, todos los trabajadores recibirán el nuevo valor de conteo de usuarios a través del canal IPC, y solo se hará una conexión a la base de datos cada 60 segundos.</p>
+<p>En el código del servidor, podemos usar el valor <code>usersCount</code> en el manejador del evento <code>message</code>. Podemos simplemente almacenar ese valor en una variable de alcance superior y usarla en cualquier lugar de ese módulo.</p>
+<p>Así es como cambié <code>slow-server.js</code> para implementar eso:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">usersCount</span><span class="p">;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">1e8</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="c1">// Simular trabajo de CPU:</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="sb">`Process </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">\n`</span><span class="p">);</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="sb">`Users: </span><span class="si">${</span><span class="nx">usersCount</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Process </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="p">});</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">  </span><span class="nx">usersCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">usersCount</span><span class="p">;</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Cambié la respuesta del servidor para incluir el valor <code>usersCount</code>. Si pruebas el código del cluster ahora, durante los primeros 60 segundos obtendrás 2 como el conteo de usuarios de todos los trabajadores (y solo se hará una solicitud a la base de datos). Después de 60 segundos, todos los trabajadores comenzarán a reportar el nuevo conteo de usuarios, 4 (y solo se hará otra solicitud a la base de datos).</p>
+<p>Todo esto es posible gracias a los canales de comunicación entre el proceso primario y todos los trabajadores.</p>
+<hr />
+<h2 id="incrementando-la-disponibilidad">Incrementando la Disponibilidad<a class="headerlink" href="#incrementando-la-disponibilidad" title="Permanent link">&para;</a></h2>
+<p>Uno de los problemas de ejecutar una sola instancia de una aplicación Node es que cuando esa instancia se bloquea, tiene que ser reiniciada. Esto causa cierto tiempo de inactividad del servidor entre estas dos acciones, incluso si el proceso fue monitoreado y el reinicio está automatizado.</p>
+<p>Esto también se aplica al caso en que el servidor tiene que reiniciarse para desplegar nuevo código. Con una instancia, habrá tiempo de inactividad del servidor que afecta la disponibilidad del sistema.</p>
+<p>Cuando tenemos múltiples instancias, la disponibilidad del sistema se puede aumentar fácilmente con solo unas pocas líneas de código adicionales. Hagamos que eso suceda.</p>
+<p>Primero, para hacer que el ejemplo sea práctico para las pruebas, simulemos un bloqueo aleatorio en el proceso del servidor. Podemos hacer una llamada a <code>process.exit</code> dentro de un temporizador que se activa después de una cantidad aleatoria de tiempo:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">// En slow-server.js</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nx">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="p">},</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="nx">_000</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Cuando un proceso trabajador termina así, el proceso primario será notificado usando el evento <code>exit</code> en el objeto <code>node:cluster</code>. Podemos registrar un manejador para ese evento y simplemente bifurcar un nuevo proceso trabajador para reemplazar el proceso bloqueado:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">// En la rama cluster.isPrimary:</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="nx">cluster</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">worker</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">exitedAfterDisconnect</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="sb">`Worker </span><span class="si">${</span><span class="nx">worker</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb"> se bloqueó.`</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">    </span><span class="s1">&#39;Iniciando un nuevo worker...&#39;</span><span class="p">,</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">  </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">();</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Nota cómo agregué una condición <code>if</code> para asegurarme de que el proceso trabajador realmente se bloqueó y no fue desconectado manualmente y eliminado por el proceso primario mismo. Por ejemplo, el proceso primario podría decidir que estamos usando demasiados recursos basándose en los patrones de carga que ve, y necesitará eliminar algunos trabajadores en ese caso. Para hacerlo, podemos usar los métodos <code>disconnect</code> en cualquier objeto trabajador y, en ese caso, la bandera <code>exitedAfterDisconnect</code> se establecerá en <code>true</code>, por lo que la declaración <code>if</code> protegerá contra la bifurcación de un nuevo trabajador en ese caso.</p>
+<p>Si ejecutamos <code>cluster.js</code> con el manejador anterior (y el bloqueo aleatorio en <code>slow-server.js</code>), después de un número aleatorio de segundos, los trabajadores comenzarán a bloquearse, y el proceso primario bifurcará inmediatamente nuevos trabajadores para aumentar la disponibilidad del sistema. Puedes medir la disponibilidad usando el mismo comando <code>loadtest</code> y ver cuántas solicitudes el servidor no podrá manejar en total (porque algunas de las solicitudes desafortunadas aún tendrán que enfrentar el caso de bloqueo).</p>
+<p>La Figura 9-4 muestra la salida de <code>loadtest</code> en mi computadora mientras ocurría el bloqueo aleatorio.</p>
+<p><img alt="" src="../randomlycrashing.png" /></p>
+<p>Solo <strong>16 solicitudes fallaron</strong> de 1,228. Eso es más del 98% de disponibilidad. Al agregar algunas líneas simples de código, ahora no tenemos que preocuparnos más por los bloqueos de procesos. El proceso primario vigilará los procesos fallidos por nosotros y los reemplazará bajo demanda.</p>
+<hr />
+<h2 id="reinicios-sin-tiempo-de-inactividad">Reinicios Sin Tiempo de Inactividad<a class="headerlink" href="#reinicios-sin-tiempo-de-inactividad" title="Permanent link">&para;</a></h2>
+<p>Cuando desplegamos nuevo código en servidores de producción, todos los procesos Node necesitan ser reiniciados. Durante un reinicio, las solicitudes a estos procesos fallarán.</p>
+<p>En un cluster, en lugar de reiniciar todos los procesos trabajadores juntos, podemos reiniciarlos uno a la vez. De esta manera, mientras un trabajador se está reiniciando, los demás continuarán sirviendo solicitudes, y no tendremos ningún tiempo de inactividad del servidor.</p>
+<p>Implementar esto con el módulo <code>node:cluster</code> es realmente fácil. Déjame mostrarte cómo.</p>
+<p>Primero, dado que no queremos reiniciar el proceso primario una vez que está activo (porque eso sería tiempo de inactividad total para todos los trabajadores), necesitamos una forma de enviar al proceso primario un comando para instruirlo a comenzar a reiniciar sus trabajadores (uno por uno).</p>
+<p>Hay algunas formas de hacerlo dependiendo del sistema operativo del servidor. Con sistemas Linux, podemos escuchar una señal de proceso como <code>SIGUSR1</code> o <code>SIGUSR2</code>. Estas señales se pueden enviar a un proceso en ejecución emitiendo un comando <code>kill</code> como este:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>$<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-SIGUSR2<span class="w"> </span>PID
+</span></code></pre></div></td></tr></table></div>
+<p>En Node, podemos escuchar esta señal <code>SIGUSR2</code> como un evento en el objeto <code>process</code>, y dentro de su manejador podemos hacer lo que queramos:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;SIGUSR2&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span><span class="c1">// Hacer algo</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>No uses <code>SIGUSR1</code>. Node lo usa para propósitos de depuración. Además, en Windows, estas señales de proceso no son compatibles, y tendrías que encontrar otra forma de instruir al proceso primario para que haga algo. Hay algunas alternativas. Por ejemplo, puedes usar la entrada estándar o la entrada de socket. También puedes monitorear la existencia de un archivo <code>process.pid</code> y rastrear cualquier evento de eliminación en él.</p>
+</div>
+<p>Ahora que sabemos cómo instruir al proceso primario para que reinicie sus trabajadores, podemos hacer que lo haga desconectando cada trabajador y bifurcando uno nuevo para reemplazarlo. Sin embargo, dado que queremos desconectar un trabajador a la vez, necesitamos que desconecte un trabajador, espere eso, bifurque otro trabajador, espere a que la bifurcación comience a tomar solicitudes, luego desconecte el siguiente trabajador.</p>
+<p>Un proceso trabajador tiene un evento <code>exit</code> similar al evento de <code>node:cluster</code> pero específico del trabajador, y significa que ese trabajador específico ha terminado. Podemos usar ese evento <code>exit</code> para comenzar la bifurcación del siguiente trabajador.</p>
+<p>Un proceso trabajador también tiene un evento <code>listening</code> que se activa después de que ocurre una llamada a <code>listen</code> en ese trabajador. Podemos usar ese evento para comenzar a desconectar el siguiente trabajador.</p>
+<p>Poniendo todo junto, aquí están los cambios que hice a <code>cluster.js</code> para implementar la recarga gradual de todos los trabajadores:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span>
+<span class="normal"><a href="#__codelineno-13-23">23</a></span>
+<span class="normal"><a href="#__codelineno-13-24">24</a></span>
+<span class="normal"><a href="#__codelineno-13-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1">// En la rama cluster.isPrimary:</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">  </span><span class="sb">`Para reiniciar workers, usa: kill -SIGUSR2 </span><span class="si">${</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="p">);</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;SIGUSR2&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">workers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">cluster</span><span class="p">.</span><span class="nx">workers</span><span class="p">);</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">restartWorker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">workerIndex</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">workers</span><span class="p">[</span><span class="nx">workerIndex</span><span class="p">];</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">worker</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="w">    </span><span class="nx">worker</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;exit&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">exitedAfterDisconnect</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Proceso terminado </span><span class="si">${</span><span class="nx">worker</span><span class="p">.</span><span class="nx">process</span><span class="p">.</span><span class="nx">pid</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="w">      </span><span class="nx">cluster</span><span class="p">.</span><span class="nx">fork</span><span class="p">().</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;listening&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="w">        </span><span class="nx">restartWorker</span><span class="p">(</span><span class="nx">workerIndex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="w">      </span><span class="p">});</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20"></a>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21"></a><span class="w">    </span><span class="nx">worker</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23"></a>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24"></a><span class="w">  </span><span class="nx">restartWorker</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25"></a><span class="p">});</span>
+</span></code></pre></div></td></tr></table></div>
+<p>El array <code>workers</code> tiene la lista de todos los trabajadores del cluster. La función <code>restartWorker</code> recibe el índice de un trabajador a reiniciar, comenzando desde 0. De esta manera, podemos hacer el reinicio en secuencia haciendo que esta función se llame a sí misma con el siguiente valor de índice cuando esté lista para el siguiente trabajador.</p>
+<p>En la función <code>restartWorker</code>, obtuvimos una referencia al trabajador que se va a reiniciar. Dado que estaremos llamando a esta función recursivamente para formar una secuencia, necesitamos una condición de parada. Cuando ya no tengamos un trabajador para reiniciar, podemos simplemente retornar. Luego desconectamos ese trabajador (usando <code>worker.disconnect</code>), pero antes de reiniciar el siguiente trabajador necesitamos bifurcar uno nuevo para reemplazar este que se está desconectando. Podemos usar el evento <code>exit</code> en el trabajador actual para bifurcar un nuevo trabajador cuando el actual termine.</p>
+<p>Tenemos que asegurarnos de que el evento <code>exit</code> se haya activado realmente después de una llamada de desconexión normal (lo opuesto al ejemplo de bloqueo). Podemos usar la bandera <code>exitedAfterDisconnect</code>. Si esta bandera es <code>false</code>, la salida fue causada por algo diferente a una llamada de desconexión, y en ese caso, debemos retornar y no hacer nada. Pero si la bandera es <code>true</code>, podemos proceder a bifurcar un nuevo trabajador para reemplazar el que estamos desconectando.</p>
+<p>Cuando el nuevo trabajador bifurcado esté listo, lo cual se determina aquí usando el evento <code>listening</code>, podemos reiniciar el siguiente llamando a la función <code>restartWorker</code> nuevamente con el siguiente valor de índice para el array de workers.</p>
+<p>Eso es todo lo que necesitamos para un reinicio sin tiempo de inactividad. Para probarlo, agregué una declaración <code>console.log</code> para darnos el ID del proceso del cluster.</p>
+<p>Ejecutar el comando <code>kill -SIGUSR2 PID</code> registrado debería comenzar el proceso de recarga de los trabajadores.</p>
+<p>Para ver el reinicio sin tiempo de inactividad en acción, antes de ejecutar el comando <code>kill</code>, ejecuta el mismo comando <code>loadtest</code>. La Figura 9-5 muestra los resultados cuando probé esto.</p>
+<p><img alt="" src="../restarted.png" /></p>
+<p><strong>¡Ninguna solicitud falló</strong> durante la recarga de este cluster!</p>
+<hr />
+<h2 id="manejando-el-estado">Manejando el Estado<a class="headerlink" href="#manejando-el-estado" title="Permanent link">&para;</a></h2>
+<p>Uno de los desafíos importantes de entender en un entorno escalado es cómo manejar el estado en memoria y cualquier comunicación con estado en general.</p>
+<p>Dado que los trabajadores tienen sus propios espacios de memoria separados, no podemos almacenar cosas en caché en memoria en un trabajador. Los otros trabajadores no tendrán acceso a ese valor en caché.</p>
+<p>Si necesitas almacenar cosas en caché en un entorno escalado, tienes que usar una entidad separada y leer/escribir en la API de esa entidad desde todos los trabajadores. Esta entidad puede ser un servidor de base de datos, un servicio como Redis, o un proceso Node dedicado con una API de lectura/escritura para que todos los demás trabajadores se comuniquen con él.</p>
+<p>Esto se conoce como <strong>caché distribuido</strong>, y es un ejemplo de la estrategia de escalabilidad de <strong>descomposición</strong> para una aplicación. Esto es algo que deberías hacer incluso si estás ejecutando tu aplicación en un solo núcleo.</p>
+<p>Otro ejemplo de gestión de estado es manejar la autenticación de usuarios y gestionar las sesiones de usuario. En un entorno escalado, una solicitud de autenticación llega al proceso primario y se envía a un trabajador. Ese trabajador comenzará a reconocer el estado del usuario. Sin embargo, cuando el mismo usuario hace otra solicitud, el balanceador de carga eventualmente los enviará a otros trabajadores, que no lo tienen como autenticado.</p>
+<p>Mantener una referencia a una sesión de usuario autenticado en una instancia ya no funcionará. En su lugar, necesitamos mantener los trabajadores <strong>sin estado (stateless)</strong> y gestionar la información de estado en una entidad externa.</p>
+<p>Otra forma de lidiar con el problema de las sesiones de usuario es usar lo que se conoce como <strong>sesiones persistentes (sticky sessions)</strong>. No es tan eficiente como usar una entidad externa con estado, pero ciertamente es más fácil de implementar. Podemos simplemente usar un algoritmo de enrutamiento como <strong>IP hash</strong>.</p>
+<p>Las sticky sessions son un ejemplo simple de la estrategia de escalabilidad de <strong>división (splitting)</strong>. Cuando un usuario se autentica con un proceso trabajador, se mantiene un registro de esa relación en el proceso primario. Luego, cuando el mismo usuario envía una nueva solicitud, usamos ese registro para seguir enviándolo al mismo proceso trabajador. De esta manera, el código del lado del servidor no tiene que cambiarse.</p>
+<p>Si bien un algoritmo de enrutamiento como IP hash no es compatible de forma nativa con el módulo <code>node:cluster</code> de Node, implementarlo es bastante simple. Podemos poner los trabajadores en un array, reducir la IP de una solicitud entrante a un índice dentro de ese array, y hacer que el trabajador con ese índice maneje la solicitud. Aquí hay una implementación muy básica de eso:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">os</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node:os&#39;</span><span class="p">;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">fork</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node:child_process&#39;</span><span class="p">;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createServer</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node:http&#39;</span><span class="p">;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">cpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">availableParallelism</span><span class="p">();</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">workers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">cpus</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">  </span><span class="nx">workers</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">fork</span><span class="p">(</span><span class="s1">&#39;./slow-server.js&#39;</span><span class="p">));</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="p">}</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getWorkerIndex</span><span class="p">(</span><span class="nx">ip</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ip</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">).</span><span class="nx">reduce</span><span class="p">(</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">    </span><span class="c1">// Hashear los octetos de IP y combinarlos</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">    </span><span class="p">(</span><span class="nx">hash</span><span class="p">,</span><span class="w"> </span><span class="nx">part</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">part</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">256</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">hash</span><span class="p">,</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">hash</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">cpus</span><span class="p">;</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="p">}</span>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19"></a>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">remoteAddress</span><span class="p">;</span>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">workerIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getWorkerIndex</span><span class="p">(</span><span class="nx">ip</span><span class="p">);</span>
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23"></a><span class="w">  </span><span class="nx">workers</span><span class="p">[</span><span class="nx">workerIndex</span><span class="p">].</span><span class="nx">send</span><span class="p">({</span><span class="w"> </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="w">  </span><span class="c1">// Lógica IPC</span>
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25"></a><span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Si bien usar un algoritmo de balanceo de carga sticky como IP hash es simple de implementar y puede ser adecuado y eficiente para algunos casos (como una aplicación pequeña con pocos trabajadores), ciertamente no es ideal. Puede llevar a una distribución desigual de la carga de trabajo y no escala muy bien. Mantener los trabajadores de Node sin estado y gestionar el estado con un servicio externo es un mejor enfoque en términos de distribución de carga de trabajo y escalabilidad.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Los algoritmos de balanceo de carga sticky como IP hash se pueden configurar y usar fácilmente en otros balanceadores de carga, como nginx, y muchos otros.</p>
+</div>
+<hr />
+<h2 id="gestores-de-procesos">Gestores de Procesos<a class="headerlink" href="#gestores-de-procesos" title="Permanent link">&para;</a></h2>
+<p>Si no quieres gestionar tu propio código de cluster, puedes usar uno de los paquetes avanzados de gestores de procesos disponibles para Node. Estos paquetes envuelven el módulo <code>node:cluster</code> y proporcionan un CLI para simplificar la gestión de procesos bifurcados.</p>
+<p>Uno de los gestores de procesos avanzados populares para Node es <strong>PM2</strong>, y aunque la mayoría de sus características cuestan dinero para usar, ofrece lo básico para ejecutar y gestionar un cluster de trabajadores de forma gratuita.</p>
+<p>Instala el paquete <code>pm2</code> con npm y echa un vistazo a su página de ayuda (con la opción <code>-h</code>). Tiene muchos comandos y opciones para iniciar, monitorear y gestionar un cluster (junto con muchas otras características).</p>
+<p>Por ejemplo, para lanzar un cluster de trabajadores para un proceso Node, simplemente inicias el proceso Node con el comando <code>start</code> y usas la opción <code>-i</code> (con un número personalizado de bifurcaciones, o <code>max</code> para usar el máximo de bifurcaciones posibles):</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>$<span class="w"> </span>npx<span class="w"> </span>pm2<span class="w"> </span>start<span class="w"> </span>script.js<span class="w"> </span>-i<span class="w"> </span>max
+</span></code></pre></div></td></tr></table></div>
+<p>Para realizar un reinicio sin tiempo de inactividad, puedes usar el comando <code>reload</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>$<span class="w"> </span>npx<span class="w"> </span>pm2<span class="w"> </span>reload<span class="w"> </span>all
+</span></code></pre></div></td></tr></table></div>
+<p>Para ver una lista de todos los procesos trabajadores con su estado y uso, puedes usar el comando <code>list</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>$<span class="w"> </span>npx<span class="w"> </span>pm2<span class="w"> </span>list
+</span></code></pre></div></td></tr></table></div>
+<hr />
+<h2 id="resumen">Resumen<a class="headerlink" href="#resumen" title="Permanent link">&para;</a></h2>
+<p>La escalabilidad en Node es un concepto de primera clase. Es por eso que Node se llama Node, después de todo.</p>
+<p>Hay muchas estrategias de escalabilidad como <strong>clonación</strong>, <strong>descomposición</strong> y <strong>división (splitting)</strong>. El enfoque de este capítulo fue principalmente en la estrategia de clonación.</p>
+<p>El módulo incorporado <code>node:cluster</code> de Node se puede usar para crear un proceso primario que bifurca muchos procesos trabajadores y los gestiona. Puede iniciarlos y detenerlos, enviarles datos y recibir datos de ellos. Los trabajadores pueden compartir puertos, y el proceso primario puede distribuir la carga de trabajo entre ellos para aumentar el rendimiento del servidor.</p>
+<p>La carga de trabajo se puede distribuir entre los procesos trabajadores de múltiples maneras. El módulo <code>node:cluster</code> usa un algoritmo de enrutamiento cíclico simple para balancear la carga de las solicitudes entrantes entre los trabajadores, pero se pueden usar otros algoritmos de enrutamiento. El almacenamiento en caché y la gestión de comunicaciones con estado en general se pueden hacer usando otros algoritmos de enrutamiento o usando servicios externos.</p>
+<p>El proceso primario también puede monitorear los trabajadores, reemplazar los defectuosos inmediatamente y reiniciar los trabajadores uno por uno. Esto mejora el tiempo de actividad y la tolerancia a fallos del servidor.</p>
+<p>En el próximo capítulo, exploraremos algunas de las herramientas que se pueden usar para mejorar los flujos de trabajo de desarrollo y ayudar con la construcción, prueba, despliegue y mantenimiento del código Node.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../cap8/TestingNode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: TESTING NODE">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                TESTING NODE
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../cap10/PracticalNode/" class="md-footer__link md-footer__link--next" aria-label="Next: PRACTICAL NODE">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                PRACTICAL NODE
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>

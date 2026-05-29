@@ -1,0 +1,1530 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A new project generated from the default template project.">
+      
+      
+        <meta name="author" content="<Alexander Guerrero>">
+      
+      
+      
+        <link rel="prev" href="../../cap4/ErrorsandDebugging/">
+      
+      
+        <link rel="next" href="../../cap6/Streams/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.36">
+    
+    
+      
+        <title>Administrador de Paquetes - Learning Node JS</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.1e981d71.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#administrador-de-paquetes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning Node JS" class="md-header__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Node JS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Administrador de Paquetes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning Node JS" class="md-nav__button md-logo" aria-label="Learning Node JS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    Learning Node JS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-nodejs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-nodejs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EFFICIENT NODEJS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    EFFICIENT NODEJS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap2/ScriptsandModules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCRIPTS AND MODULES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap3/AsynchronyandEvents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ASYNCHRONY AND EVENTS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap4/ErrorsandDebugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ERRORS AND DEBUGGING
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PACKAGE MANAGEMENT
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PACKAGE MANAGEMENT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-la-gestion-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introducción a la Gestión de Paquetes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-comando-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El Comando npm
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionado-semantico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Versionado Semántico
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actualizando-y-eliminando-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Actualizando y Eliminando Paquetes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-y-publicando-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Creando y Publicando Paquetes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts-npm-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Scripts npm Run
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-comando-npx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El Comando npx
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumen
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap6/Streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    STREAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap7/ChildProcesses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CHILD PROCESSES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap8/TestingNode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TESTING NODE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap9/ScalingNode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SCALING NODE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap10/PracticalNode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PRACTICAL NODE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OTRO LIBRO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OTRO LIBRO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cap1/nodeFunfamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NODE FUNDAMENTALS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion-a-la-gestion-de-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introducción a la Gestión de Paquetes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-comando-npm" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El Comando npm
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versionado-semantico" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Versionado Semántico
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actualizando-y-eliminando-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Actualizando y Eliminando Paquetes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-y-publicando-paquetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Creando y Publicando Paquetes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts-npm-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Scripts npm Run
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-comando-npx" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El Comando npx
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Resumen
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../cap1/nodeFunfamentals/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    EFFICIENT NODEJS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="administrador-de-paquetes">Administrador de Paquetes<a class="headerlink" href="#administrador-de-paquetes" title="Permanent link">&para;</a></h1>
+<p>En el Capítulo 1, aprendimos brevemente sobre el gestor de paquetes predeterminado de Node, npm. Ahora es el momento de profundizar y sentirnos cómodos encontrando, usando y creando paquetes para Node.</p>
+<p>El término <strong>paquete</strong> es lo que el mundo del software usa para describir una carpeta que contiene código. En Node, esa carpeta también tendrá un archivo <code>package.json</code> que describe los metadatos y las dependencias del paquete.</p>
+<p>El término <strong>módulo</strong> se refiere a un solo archivo o una colección de archivos relacionados que encapsulan un conjunto de funcionalidades. Los módulos permiten a los desarrolladores organizar su código en unidades separadas y reutilizables. Un paquete Node a menudo representa un solo módulo Node, pero algunos paquetes tienen más de un módulo.</p>
+<p>Un paquete usualmente se refiere a código externo del que un proyecto depende, pero creo que una mejor palabra para describir el código de un paquete es <strong>genérico</strong>. Puedes hacer que partes de tu propio código sean genéricas y extraerlas en un paquete que luego puedas usar en muchos proyectos.</p>
+<hr />
+<h2 id="introduccion-a-la-gestion-de-paquetes">Introducción a la Gestión de Paquetes<a class="headerlink" href="#introduccion-a-la-gestion-de-paquetes" title="Permanent link">&para;</a></h2>
+<p>Si los paquetes son solo carpetas, ¿por qué exactamente necesitamos un gestor de paquetes para ellos? Mantener el rastro de estas carpetas de paquetes se vuelve un desafío cuando hay muchas y cuando estos paquetes dependen de otros paquetes. Esto es especialmente cierto para un equipo de desarrolladores trabajando en el mismo proyecto Node. Las herramientas de gestión de paquetes proporcionan un enfoque simplificado y sistémico para manejar las tareas comunes relacionadas con los paquetes. Proporcionan comandos simples para instalar, actualizar y eliminar paquetes, y para asegurar que un proyecto tenga exactamente lo que necesita para funcionar correctamente y de manera similar en todas las máquinas que lo ejecutan.</p>
+<p>Más importante aún, las herramientas de gestión de paquetes pueden gestionar cualquier conflicto entre todas las dependencias en el proyecto, a las que generalmente se les llama el <strong>árbol de dependencias</strong>. Es un árbol porque un proyecto tiene una lista principal de dependencias, y estas dependencias principales tienen sus propias dependencias, y así sucesivamente. El término <strong>dependencia transitiva</strong> se usa a menudo para referirse a todas las dependencias en un proyecto que están más allá del primer nivel del árbol de dependencias.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La herramienta npm ha sido durante mucho tiempo la predeterminada para gestionar paquetes y sus dependencias en proyectos Node, pero hoy en día existen algunas alternativas, como Yarn, pnpm y JSR. Estas alternativas a npm tienen sus características y ventajas únicas. A menudo ofrecen mejoras en rendimiento, uso de espacio en disco y gestión de versiones. Esta competencia saludable ha impulsado a npm a mejorar también. En este libro solo cubrimos npm, pero podrías terminar usando un gestor de paquetes diferente. Los conceptos básicos de la gestión de paquetes son todos similares, pero las interfaces de comandos y lo que sucede detrás de escena son un poco diferentes.</p>
+</div>
+<p>El término npm se usa principalmente para referirse al CLI (comando <code>npm</code>) que viene con Node y proporciona herramientas para gestionar paquetes Node. También está el sitio web de npm, que aloja el registro público de muchos paquetes npm de código abierto. El registro de npm es como un gran almacén lleno de paquetes JavaScript, ofreciendo muchas opciones para características y funcionalidades comunes que podrías necesitar agregar a tus proyectos.</p>
+<p>Por ejemplo, si necesitas que tu proyecto maneje solicitudes web, maneje web sockets o se conecte a una base de datos, no necesitas construir estas características desde cero o lidiar con código de bajo nivel. Puedes descargar y usar soluciones genéricas ya preparadas y a menudo probadas en batalla desde un registro de paquetes y luego construir tus necesidades personalizadas sobre ellas.</p>
+<p>Pero, ¿se puede confiar en estas soluciones ya preparadas? Tú debes ser el juez de eso, pero muchos de estos paquetes ya han establecido la confianza y el respeto de las comunidades de JavaScript y Node. Todos los paquetes npm son de código abierto, por lo que puedes hacer tu propia investigación. Hay actores maliciosos en el espacio, así que elige tus paquetes cuidadosamente y mantén un ojo en sus actualizaciones. Incluso un paquete de confianza podría ser hackeado, pero mirar los cambios en el código fuente y las actividades alrededor de esos cambios (como issues de GitHub, pull requests, etc.) ayuda a mitigar el riesgo.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>El registro de npm es el registro predeterminado para el comando npm, pero npm es altamente configurable. Puedes, por ejemplo, configurarlo para usar un registro diferente.</p>
+</div>
+<p>Adoptar un enfoque sistémico para gestionar las dependencias de paquetes es esencial para un proyecto en equipo. Con npm, debido a que todas las dependencias de paquetes están configuradas en el archivo <code>package.json</code> del proyecto (que se comparte entre todos los desarrolladores), se vuelve fácil configurar un nuevo entorno o actualizar uno más antiguo. Todos los desarrolladores del equipo usan versiones similares para los paquetes del proyecto, y cuando ocurren conflictos, pueden detectarse temprano.</p>
+<p>Los paquetes generalmente se actualizan con frecuencia para corregir errores, agregar nuevas funciones y mejorar las cosas en general. Con un gestor de paquetes, tienes el control de cómo manejar estas actualizaciones. Para garantizar la compatibilidad y prevenir conflictos, puedes especificar qué versiones exactas de paquetes necesita el proyecto. También puedes automatizar la instalación de parches de seguridad importantes.</p>
+<p>El proyecto npm comenzó con un pequeño conjunto de scripts de Node para gestionar tareas comunes alrededor de carpetas que contienen código para Node, y desde entonces ha evolucionado hasta convertirse en un gestor de paquetes completamente funcional que es útil no solo para Node sino para todo el código JavaScript, en todas partes. Si navegas por los paquetes que están alojados en el registro de npm, encontrarás paquetes que son para Node y paquetes que son bibliotecas y frameworks destinados a ser utilizados en un navegador o una aplicación móvil. Si profundizas lo suficiente, verás ejemplos de paquetes para muchos otros entornos donde se puede ejecutar JavaScript.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>El registro de npm tiene muchos paquetes inútiles. Cualquiera puede publicar paquetes y no hay control de calidad. No tomes la presencia de un paquete en ese registro como una señal de confianza. Siempre haz tu propia investigación, mira cómo se usa el paquete en otros proyectos de código abierto y, preferiblemente, inspecciona su código tú mismo.</p>
+</div>
+<p>Una herramienta interesante que puedes usar para encontrar paquetes activamente mantenidos y populares en el ecosistema Node es el sitio web <strong>Node.js Toolbox</strong>. Los mejores paquetes allí están agrupados por tareas, por lo que, por ejemplo, puedes ver todas tus opciones para un paquete de entrega de correo electrónico o un paquete de carga de archivos.</p>
+<hr />
+<h2 id="el-comando-npm">El Comando npm<a class="headerlink" href="#el-comando-npm" title="Permanent link">&para;</a></h2>
+<p>El CLI de npm es poderoso y soporta muchos comandos. Para ver las instrucciones de uso y la lista de todos los comandos disponibles, puedes ejecutar <code>npm --help</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>$<span class="w"> </span>npm<span class="w"> </span>--help
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>npm<span class="w"> </span>&lt;command&gt;
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>Uso:
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>npm<span class="w"> </span>install<span class="w">          </span>instala<span class="w"> </span>todas<span class="w"> </span>las<span class="w"> </span>dependencias<span class="w"> </span>en<span class="w"> </span>tu<span class="w"> </span>proyecto
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>npm<span class="w"> </span>install<span class="w"> </span>&lt;foo&gt;<span class="w">    </span>agrega<span class="w"> </span>la<span class="w"> </span>dependencia<span class="w"> </span>&lt;foo&gt;<span class="w"> </span>a<span class="w"> </span>tu<span class="w"> </span>proyecto
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>npm<span class="w"> </span><span class="nb">test</span><span class="w">             </span>ejecuta<span class="w"> </span>los<span class="w"> </span>tests<span class="w"> </span>de<span class="w"> </span>este<span class="w"> </span>proyecto
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>npm<span class="w"> </span>run<span class="w"> </span>&lt;foo&gt;<span class="w">        </span>ejecuta<span class="w"> </span>el<span class="w"> </span>script<span class="w"> </span>llamado<span class="w"> </span>&lt;foo&gt;
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>npm<span class="w"> </span>&lt;command&gt;<span class="w"> </span>-h<span class="w">     </span>ayuda<span class="w"> </span>rápida<span class="w"> </span>sobre<span class="w"> </span>&lt;command&gt;
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>npm<span class="w"> </span>-l<span class="w">               </span>muestra<span class="w"> </span>información<span class="w"> </span>de<span class="w"> </span>uso<span class="w"> </span>para<span class="w"> </span>todos<span class="w"> </span>los<span class="w"> </span>comandos
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>npm<span class="w"> </span><span class="nb">help</span><span class="w"> </span>&lt;term&gt;<span class="w">      </span>busca<span class="w"> </span>ayuda<span class="w"> </span>sobre<span class="w"> </span>&lt;term&gt;
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>npm<span class="w"> </span><span class="nb">help</span><span class="w"> </span>npm<span class="w">         </span>descripción<span class="w"> </span>general<span class="w"> </span>más<span class="w"> </span>detallada
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>Todos<span class="w"> </span>los<span class="w"> </span>comandos:
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span>access,<span class="w"> </span>adduser,<span class="w"> </span>audit,<span class="w"> </span>bin,<span class="w"> </span>bugs,<span class="w"> </span>cache,<span class="w"> </span>ci,<span class="w"> </span>completion,
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">  </span>config,<span class="w"> </span>dedupe,<span class="w"> </span>deprecate,<span class="w"> </span>diff,<span class="w"> </span>dist-tag,<span class="w"> </span>docs,<span class="w"> </span>doctor,
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">  </span>edit,<span class="w"> </span>exec,<span class="w"> </span>explain,<span class="w"> </span>explore,<span class="w"> </span>find-dupes,<span class="w"> </span>fund,<span class="w"> </span>get,<span class="w"> </span>help,
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">  </span>hook,<span class="w"> </span>init,<span class="w"> </span>install,<span class="w"> </span>install-ci-test,<span class="w"> </span>install-test,<span class="w"> </span>link,
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">  </span>ll,<span class="w"> </span>login,<span class="w"> </span>logout,<span class="w"> </span>ls,<span class="w"> </span>org,<span class="w"> </span>outdated,<span class="w"> </span>owner,<span class="w"> </span>pack,<span class="w"> </span>ping,
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">  </span>pkg,<span class="w"> </span>prefix,<span class="w"> </span>profile,<span class="w"> </span>prune,<span class="w"> </span>publish,<span class="w"> </span>rebuild,<span class="w"> </span>repo,
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">  </span>restart,<span class="w"> </span>root,<span class="w"> </span>run-script,<span class="w"> </span>search,<span class="w"> </span>set,<span class="w"> </span>set-script,
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">  </span>shrinkwrap,<span class="w"> </span>star,<span class="w"> </span>stars,<span class="w"> </span>start,<span class="w"> </span>stop,<span class="w"> </span>team,<span class="w"> </span>test,<span class="w"> </span>token,
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">  </span>uninstall,<span class="w"> </span>unpublish,<span class="w"> </span>unstar,<span class="w"> </span>update,<span class="w"> </span>version,<span class="w"> </span>view,<span class="w"> </span>whoami
+</span></code></pre></div></td></tr></table></div>
+<p>No te abrumes por la cantidad de comandos que ves aquí. Realmente no necesitas muchos de ellos. Los comandos que usarás a menudo son <code>install</code> y <code>update</code>. También probablemente usarás comandos <code>run</code> como <code>start</code> y <code>test</code>, y un puñado de otros comandos dependiendo del tipo de proyecto. La mayoría de los otros comandos los usarás con poca frecuencia.</p>
+<p>Aquí hay algunos destacados:</p>
+<ul>
+<li>
+<p><strong><code>npm create</code></strong> — Configura un paquete npm nuevo o existente. Este es un alias del comando <code>init</code> que usamos en el Capítulo 1. Puedes usarlo para crear un archivo <code>package.json</code> o ejecutar un inicializador para paquetes que los proporcionan (como ESLint o Vite). Un inicializador determina cómo se configura y construye una nueva aplicación, y puede hacer muchas otras tareas también.</p>
+<p><img alt="" src="../npmcreate.png" /></p>
+</li>
+<li>
+<p><strong><code>npm show &lt;package&gt;</code></strong> — Muestra información sobre un paquete, como qué licencia usa, cuántas dependencias tiene, cuándo fue publicado, etc. Puedes usarlo sin argumento para ver información sobre el paquete actual.</p>
+<p><img alt="" src="../npmshow.png" /></p>
+</li>
+<li>
+<p><strong><code>npm search &lt;términos&gt;</code></strong> — Busca en el registro npm paquetes basados en la consulta de búsqueda proporcionada. Por ejemplo, prueba <code>npm search lodash</code>.</p>
+<p><img alt="" src="../npmsearch.png" /></p>
+</li>
+<li>
+<p><strong><code>npm list &lt;package&gt;</code></strong> — Muestra una vista en forma de árbol de los paquetes instalados y sus dependencias, junto con sus versiones. Puedes usarlo en un solo paquete o para toda la aplicación. Un alias común es <code>npm ls</code>. Pruébalo con la opción <code>--depth=1</code> para ver el primer nivel de dependencias transitivas.</p>
+<p><img alt="" src="../npmlist.png" /></p>
+</li>
+<li>
+<p><strong><code>npm link</code></strong> — Crea un enlace simbólico entre un paquete en tu sistema de archivos local y un paquete instalado en <code>node_modules</code> (o globalmente). Esto te permite desarrollar y probar paquetes localmente sin necesidad de publicar o reinstalar.</p>
+</li>
+<li>
+<p><strong><code>npm cache clean</code></strong> — Limpia la caché de npm, lo que puede ayudar a resolver ciertos problemas de instalación o versiones de paquetes desactualizadas.</p>
+</li>
+<li>
+<p><strong><code>npm publish</code></strong> — Publica tu paquete en el registro npm, haciéndolo disponible para que otros lo instalen. Veremos un ejemplo de esto más adelante en el capítulo.</p>
+</li>
+</ul>
+<p>Puedes obtener más detalles e instrucciones sobre cualquier comando npm usando <code>npm &lt;command&gt; -h</code>. Aquí está el resumen de ayuda para el comando <code>npm install</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-h
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>Install<span class="w"> </span>a<span class="w"> </span>package
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>Uso:
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>&lt;@scope&gt;/<span class="o">]</span>&lt;pkg&gt;
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>&lt;@scope&gt;/<span class="o">]</span>&lt;pkg&gt;@&lt;tag&gt;
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>&lt;@scope&gt;/<span class="o">]</span>&lt;pkg&gt;@&lt;version&gt;
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span><span class="o">[</span>&lt;@scope&gt;/<span class="o">]</span>&lt;pkg&gt;@&lt;version<span class="w"> </span>range&gt;
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span>&lt;alias&gt;@npm:&lt;name&gt;
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span>&lt;folder&gt;
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span>&lt;tarball<span class="w"> </span>file&gt;
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span>&lt;tarball<span class="w"> </span>url&gt;
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span>&lt;git://<span class="w"> </span>url&gt;
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">  </span>npm<span class="w"> </span>install<span class="w"> </span>&lt;github<span class="w"> </span>username&gt;/&lt;github<span class="w"> </span>project&gt;
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a>Opciones:
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">  </span><span class="o">[</span>-S<span class="p">|</span>--save<span class="p">|</span>--no-save<span class="p">|</span>--save-prod<span class="p">|</span>--save-dev<span class="p">|</span>--save-optional<span class="p">|</span>...
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">  </span>...
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a>aliases:<span class="w"> </span>add,<span class="w"> </span>i,<span class="w"> </span><span class="k">in</span>,<span class="w"> </span>ins,<span class="w"> </span>inst,<span class="w"> </span>...
+</span></code></pre></div></td></tr></table></div>
+<p>Como puedes ver, podemos usar el comando <code>install</code> de muchas maneras y con muchas opciones. También tiene muchos alias.</p>
+<p>No necesitas recordar todas las formas de uso y opciones, pero hacer un escaneo rápido para referencia futura ciertamente es útil.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Esta es en realidad la versión resumida de la página de ayuda de install. Puedes ver la página de ayuda completa usando <code>npm help install</code>.</p>
+</div>
+<p>Aquí hay algunos desafíos para que descubras a partir del texto de ayuda de <code>npm install</code>:</p>
+<ul>
+<li>Instalar un paquete que está alojado bajo un <strong>scope</strong>. Un scope de npm es una forma de agrupar paquetes relacionados bajo un espacio de nombres u organización específica. Un ejemplo de scope es <code>@babel</code>. Un ejemplo de paquete bajo ese scope es <code>core</code>.</li>
+<li>Instalar un paquete directamente desde GitHub. Intenta instalar lodash desde GitHub. Para verificar, mira la sección de dependencias del archivo <code>package.json</code> del proyecto — lodash debería tener una etiqueta de github.</li>
+<li>Instalar un paquete globalmente para hacerlo disponible para cualquier proyecto Node en la máquina. Esta opción se usa comúnmente para herramientas de línea de comandos. Por ejemplo, puedes instalar el paquete ESLint globalmente usando npm, y eso hará que el comando <code>eslint</code> esté disponible en todas partes.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Evita instalar paquetes npm globalmente a menos que realmente lo necesites. Instalar paquetes globalmente reduce la modularidad de tus proyectos y puede llevar a conflictos de versiones entre diferentes proyectos. También puede hacer que tus proyectos se comporten de manera inconsistente en diferentes entornos.</p>
+</div>
+<hr />
+<h2 id="versionado-semantico">Versionado Semántico<a class="headerlink" href="#versionado-semantico" title="Permanent link">&para;</a></h2>
+<p>El comando <code>npm update</code> se puede usar para actualizar los paquetes listados en <code>package.json</code> a su última versión (según lo restringido en el archivo). Para entender eso, primero necesitamos aprender sobre el <strong>versionado semántico</strong> (o <strong>SemVer</strong> para abreviar).</p>
+<p>SemVer es usado por npm cuando es momento de actualizar paquetes. Cada paquete tiene una versión. Una versión es una de las piezas de información requeridas sobre un paquete, y generalmente se escribe con el formato SemVer. Por ejemplo, cuando instalamos el paquete lodash en el Capítulo 1, la línea que se agregó a la sección de dependencias del <code>package.json</code> fue la siguiente:</p>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nt">&quot;lodash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.17.21&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>La parte <code>4.17.21</code> es la cadena SemVer, y es básicamente un contrato simple entre el autor de un paquete y los usuarios de ese paquete. Cuando ese número se incrementa para lanzar una nueva versión del paquete, el SemVer comunica qué tan grande es el cambio que traerá ese nuevo lanzamiento.</p>
+<p>El <strong>primer número</strong>, que se llama el <strong>número major</strong>, se usa para comunicar que ocurrieron cambios que rompen la compatibilidad (<strong>breaking changes</strong>). Esos son cambios que requerirán que los usuarios modifiquen su código para que funcione con el nuevo lanzamiento. La próxima vez que eso suceda para lodash, se lanzará con una cadena SemVer que comienza con 5 en lugar de 4.</p>
+<p>El <strong>segundo número</strong>, que se llama el <strong>número minor</strong>, se usa para comunicar que se agregaron nuevas funciones en un lanzamiento, pero las funciones anteriores deberían seguir funcionando como antes. Un lanzamiento de versión minor también podría incluir advertencias sobre deprecaciones futuras y cambios de API. Las actualizaciones de versión minor deberían ser compatibles hacia atrás y seguras para que los usuarios las actualicen, sin necesidad de hacer cambios en sus proyectos.</p>
+<p>El <strong>último número</strong>, que se llama el <strong>número patch</strong>, se usa para comunicar que el lanzamiento contiene solo correcciones de errores y mejoras de seguridad. No debería introducir ninguna nueva función ni cambios que rompan la compatibilidad.</p>
+<p>A menudo verás caracteres especiales antes de los números SemVer. Estos caracteres especiales representan un rango de versiones aceptables y se utilizan cuando le indicas a npm que actualice tu árbol de dependencias.</p>
+<p>Por ejemplo, el carácter <strong>tilde (<code>~</code>)</strong> significa que una actualización puede instalar la versión patch más reciente (recuerda, patch es el tercer número). El carácter <strong>caret (<code>^</code>)</strong> es una restricción más relajada que significa que una actualización puede instalar la versión minor más reciente. Si actualizamos el paquete lodash mientras su cadena de versión es <code>^4.17.21</code>, intentará encontrar la última versión que comience con el número major 4. Por lo tanto, podría instalar un paquete <code>4.19.1</code>, pero no instalará un <code>5.1.2</code>.</p>
+<p>Otros caracteres especiales son <code>=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code>, <code>&lt;=</code>. Si no se usa ningún carácter especial, significa que la versión a utilizar debe ser siempre la exacta que especifica la cadena SemVer. Cuando instalas un paquete npm, puedes usar <code>--save-exact</code> (o <code>-E</code>) para indicarle a npm que guarde la dependencia como una versión exacta sin caracteres especiales.</p>
+<p>En lugar de una cadena de versión, se puede usar un <strong>asterisco (<code>*</code>)</strong> para indicar la última versión disponible.</p>
+<p>Otra forma de especificar la restricción de versión es con una <strong><code>x</code></strong> en la cadena. Por ejemplo, una cadena de versión <code>4.x</code> significa cualquier versión que comience con 4. Una cadena <code>4.17.x</code> significa cualquier versión que comience con <code>4.17</code>.</p>
+<p>También puedes especificar manualmente un rango usando el carácter <strong><code>-</code></strong>, por ejemplo: <code>4.15.0 - 4.17.0</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Para más detalles sobre las cadenas de versión y una forma interactiva de probarlas, consulta la <strong>calculadora SemVer de npm</strong>. Puedes ingresar una cadena de versión para un paquete npm en particular y ver todas las versiones disponibles restringidas por esa cadena.</p>
+</div>
+<p>Creo que SemVer es excelente. Los desarrolladores responsables de npm deberían respetarlo cuando lanzan nuevas versiones de su código, pero es bueno tratar lo que comunica como una <strong>promesa</strong> más que como una <strong>garantía</strong>, porque incluso un lanzamiento patch podría filtrar cambios que rompan la compatibilidad a través de sus propias dependencias. Una versión minor, por ejemplo, podría introducir nuevos elementos que entren en conflicto con elementos que antes considerabas seguros de usar. <strong>Probar tu código es la única forma de proporcionar algún tipo de garantía de que no está roto después de una actualización.</strong></p>
+<h2 id="actualizando-y-eliminando-paquetes">Actualizando y Eliminando Paquetes<a class="headerlink" href="#actualizando-y-eliminando-paquetes" title="Permanent link">&para;</a></h2>
+<p>Cuando los paquetes en tu proyecto tengan actualizaciones disponibles, puedes ejecutar el comando <code>npm update &lt;nombre-del-paquete&gt;</code> para actualizar un solo paquete, o el comando <code>npm update</code> para actualizar todos los paquetes en el árbol de dependencias.</p>
+<p>Simulemos un caso donde ocurrirá una actualización instalando una versión anterior de lodash. Para hacerlo, simplemente especificamos la versión exacta que nos interesa agregándola después del carácter <code>@</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>lodash@3.9.1
+</span></code></pre></div></td></tr></table></div>
+<p>Puedes verificar qué versión instaló npm usando el comando <code>npm ls</code>. Debería ser <code>3.9.1</code>.</p>
+<p>Ahora echa un vistazo a <code>package.json</code> y nota cómo la cadena de versión comienza con el carácter <code>^</code>. Esto permite a npm actualizar el paquete a la última versión minor disponible.</p>
+<p>Para ver qué versión se instalará usando el comando <code>npm update</code>, puedes ejecutar primero el comando <code>npm outdated</code>. Listará todos los paquetes, y si alguno tiene una actualización válida (permitida por las restricciones de las cadenas de versión), la versión actualizada se listará bajo la columna <strong>Wanted</strong>. Como se muestra en la Figura 5-5, la salida también incluirá la última versión.</p>
+<p><img alt="" src="../npmoutdated.png" /></p>
+<p>Debido a la restricción <code>^</code>, la versión Wanted en este caso será <code>3.10.1</code>. Esa fue la última versión de lodash lanzada bajo la rama major 3.</p>
+<p>Si cambias <code>^</code> por la más estricta <code>~</code> y ejecutas el comando <code>npm outdated</code>, la versión Wanted será <code>3.9.3</code>. Esa fue la última versión de lodash lanzada bajo la rama minor 3.9.</p>
+<p>Si cambias <code>~</code> por <code>&gt;</code> y ejecutas el comando <code>npm outdated</code>, la versión Wanted coincidirá con la última.</p>
+<p>El comando <code>outdated</code> es como un ensayo en seco para que verifiques qué paquetes se actualizarán. No realiza la actualización. Para actualizar, ejecutas el comando <code>npm update</code>.</p>
+<p>Experimenta con los comandos <code>outdated</code>, <code>update</code> y <code>ls</code> con un paquete como ESLint que tiene sus propias dependencias. Instala también una versión anterior de ese, por ejemplo:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>$<span class="w"> </span>npm<span class="w"> </span>i<span class="w"> </span>eslint@8
+</span></code></pre></div></td></tr></table></div>
+<p>Nota la versión que uso aquí. Ese <code>8</code> es la versión major, y la sintaxis significa instalar la última versión de ESLint que comience con 8. Mira qué versión se instaló con el comando <code>npm ls</code>.</p>
+<p>¿Qué sucede si cambias la cadena de versión en <code>package.json</code> a una más antigua? Por ejemplo, cambia la cadena de versión de ESLint a <code>~7.32.0</code>. Dado que esa restricción especifica algo más antiguo de lo que tienes instalado actualmente, ejecutar el comando <code>npm update</code> realmente degradará el paquete ESLint. Verifica eso con <code>npm ls</code>.</p>
+<p>El comando <code>update</code> actualizará todas las dependencias, incluidas las transitivas, basándose en las restricciones de las cadenas de versión especificadas en los archivos <code>package.json</code> de los paquetes que dependen de ellas.</p>
+<p>Para hacer que el comando <code>outdated</code> muestre todas las dependencias a actualizar, ejecútalo con la bandera <code>-a</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$<span class="w"> </span>npm<span class="w"> </span>outdated<span class="w"> </span>-a
+</span></code></pre></div></td></tr></table></div>
+<p>Digamos que decidimos que ya no queremos usar el paquete ESLint. Puedes eliminarlo de <code>package.json</code> manualmente, pero eso no lo eliminará de <code>node_modules</code>. Para eliminarlo tanto de <code>package.json</code> como de <code>node_modules</code>, puedes ejecutar <code>npm uninstall &lt;nombre-del-paquete&gt;</code>. El comando <code>uninstall</code> es la mejor manera aquí.</p>
+<p>Sin embargo, si alguien del equipo usó el comando <code>uninstall</code> y tú trajiste ese cambio de código, todo lo que ves es la línea siendo eliminada de <code>package.json</code>. La carpeta <code>node_modules</code> generalmente no se comparte en los repositorios de control de fuentes. Necesitarás ejecutar comandos npm para sincronizar tu carpeta <code>node_modules</code> con las actualizaciones en <code>package.json</code>.</p>
+<p>Para simular eso, elimina la línea de eslint de <code>package.json</code>. Ahora tienes paquetes que están instalados pero ya no son necesarios (según <code>package.json</code>). Si ejecutas el comando <code>npm ls</code> ahora, listará estos paquetes con una etiqueta "extraneous" al lado, como se muestra en la Figura 5-6.</p>
+<p><img alt="" src="../Extraneouspackages.png" /></p>
+<p>Para eliminar todos los paquetes no utilizados del proyecto, puedes usar el comando <code>npm prune</code>:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>$<span class="w"> </span>npm<span class="w"> </span>prune
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>removed<span class="w"> </span><span class="m">84</span><span class="w"> </span>packages,<span class="w"> </span>and<span class="w"> </span>audited<span class="w"> </span><span class="m">4</span><span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>2s
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="m">1</span><span class="w"> </span>package<span class="w"> </span>is<span class="w"> </span>looking<span class="w"> </span><span class="k">for</span><span class="w"> </span>funding
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">  </span>run<span class="w"> </span><span class="sb">`</span>npm<span class="w"> </span>fund<span class="sb">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>details
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>found<span class="w"> </span><span class="m">0</span><span class="w"> </span>vulnerabilities
+</span></code></pre></div></td></tr></table></div>
+<p>Ahora si ejecutas el comando <code>npm ls</code> nuevamente, no debería haber paquetes extraneous.</p>
+<p>Para asegurar que las dependencias de un proyecto estén sincronizadas con los cambios en <code>package.json</code>, cada vez que traigas nuevo código y notes cambios en <code>package.json</code>, ejecuta tanto <code>prune</code> como <code>install</code>.</p>
+<p>Sin embargo, el comando <code>npm install</code> siempre instalará la última versión de un paquete según lo permitido por la restricción de la cadena de versión. Eso significa que en el tiempo entre que una dependencia fue agregada por un desarrollador y otro desarrollador trae el código para instalarlo, una nueva versión de esa dependencia podría haber sido lanzada, y si la cadena de versión especificada en <code>package.json</code> lo permite, <code>npm install</code> instalará esa nueva versión, que es diferente de la que está instalada en la máquina que agregó la dependencia en primer lugar.</p>
+<p>Es por eso que npm mantiene automáticamente otro archivo en la raíz del proyecto, el archivo <code>package-lock.json</code>. El propósito de ese archivo es bloquear las versiones de los paquetes para que todos los desarrolladores del proyecto usen exactamente las mismas versiones de todos los paquetes. Esto es cierto tanto para las dependencias directas como para las transitivas.</p>
+<p>Cada vez que se agrega, actualiza o elimina una dependencia, npm modificará el archivo <code>package-lock.json</code> para describir todo el árbol de dependencias (directas y transitivas), junto con las versiones exactas a instalar.</p>
+<p>Debido a que el archivo <code>package-lock.json</code> debe ser parte del repositorio Git del proyecto para que otros lo usen, su historial de cambios se puede usar para volver a estados anteriores de exactamente lo que había en la carpeta <code>node_modules</code>.</p>
+<p>El archivo <code>package-lock.json</code> también es usado por npm para optimizar sus operaciones.</p>
+<hr />
+<h2 id="creando-y-publicando-paquetes">Creando y Publicando Paquetes<a class="headerlink" href="#creando-y-publicando-paquetes" title="Permanent link">&para;</a></h2>
+<p>Creemos y publiquemos un paquete npm simple que proporcione una función llamada <code>printInFrame</code>. Esa función toma un argumento de cadena y muestra esa cadena dentro de un marco hecho de caracteres <code>*</code>. Nombremos el paquete <code>print-in-frame</code>.</p>
+<p>Aquí hay un ejemplo de cómo lo usaríamos:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">printInFrame</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;print-in-frame&#39;</span><span class="p">;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nx">printInFrame</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Ejecutar este código debería mostrar lo siguiente:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>***************
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>* Hello World *
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>***************
+</span></code></pre></div>
+<p>Primero, crea una nueva carpeta para alojar el código de este paquete. El nombre de la carpeta generalmente coincide con el nombre del paquete (aunque eso no es un requisito):</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>print-in-frame<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>print-in-frame
+</span></code></pre></div></td></tr></table></div>
+<p>El siguiente paso es convertir esta carpeta vacía en un paquete npm. Hacemos eso agregando un archivo <code>package.json</code>. Podemos usar <code>npm init</code> para eso:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>$<span class="w"> </span>npm<span class="w"> </span>init
+</span></code></pre></div></td></tr></table></div>
+<p>Responde las preguntas o usa las respuestas predeterminadas. Después de que el archivo sea creado, agrega manualmente <code>"type": "module"</code> para indicarle a Node que este proyecto usará exclusivamente módulos ES.</p>
+<p>Abre tu editor de código y crea un archivo <code>index.js</code> en la raíz del proyecto. Para implementar la función <code>printInFrame</code>, necesitamos leer la longitud del texto y usarla para imprimir un conjunto de caracteres <code>*</code> antes y después. Esto se puede hacer de muchas maneras. Esto es lo que hice:</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// En index.js</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">times</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;lodash.times&#39;</span><span class="p">;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">printInFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">text</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">frameWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">4</span><span class="p">;</span><span class="w"> </span><span class="c1">// 2 estrellas + 2 espacios</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">textToPrint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">  </span><span class="nx">times</span><span class="p">(</span><span class="nx">frameWidth</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">textToPrint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">textToPrint</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">));</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">  </span><span class="nx">textToPrint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">textToPrint</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;* &#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39; *&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="p">;</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">  </span><span class="nx">times</span><span class="p">(</span><span class="nx">frameWidth</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">textToPrint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">textToPrint</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;*&#39;</span><span class="p">));</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">textToPrint</span><span class="p">);</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">textToPrint</span><span class="p">;</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="p">};</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">printInFrame</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Hice que la función dependiera de <code>lodash.times</code>, que proporciona una función que puede repetir un bloque de código cualquier número de veces. Usé eso para preparar las líneas de encabezado y pie del marco. Necesitas ejecutar <code>npm install lodash.times</code>.</p>
+<p>Para usar el paquete <code>print-in-frame</code> en un proyecto Node, necesitamos instalarlo. En realidad podemos instalarlo directamente desde el sistema de archivos. Por ejemplo, si estamos en un proyecto Node que está en el mismo directorio que la carpeta <code>print-in-frame</code>, en ese otro proyecto Node podemos hacer lo siguiente:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>../print-in-frame
+</span></code></pre></div></td></tr></table></div>
+<p>Si bien esto funciona bien, cuando compartas tu código con otros, tendrás que compartir también la carpeta <code>print-in-frame</code>. Para mantenerlos separados, necesitaremos usar un registro npm y publicar el paquete allí.</p>
+<p>Si quieres publicar tu paquete en el registro npm, necesitas tener una cuenta allí. Luego puedes usar el comando <code>npm login</code> para autenticar tu cliente npm local con tu cuenta. Te pedirá tu nombre de usuario y contraseña.</p>
+<p>Dado que el nombre del paquete es único en el registro npm, para evitar conflictos, agrega un prefijo al nombre de tu paquete. Cambié la propiedad <code>name</code> en <code>package.json</code> a <code>samer-print-in-frame</code>. Ya que estás ahí, agrega una descripción al paquete también. Es opcional, pero hace que el paquete sea más fácil de descubrir.</p>
+<p>Cuando estés listo, ejecuta el comando <code>npm publish</code>. Si todo funciona, tu paquete estará disponible en el sitio web del registro npm (usa la búsqueda de la interfaz de usuario allí para encontrarlo). También puedes usar el comando <code>npm search</code> para encontrarlo.</p>
+<p>Con el paquete publicado, instálalo en tu proyecto Node principal con <code>npm install PREFIX-print-in-frame</code>, reemplazando <code>PREFIX</code> con el prefijo que usaste.</p>
+<p>Ahora mira la salida de <code>npm ls</code>. Deberías ver dos nuevas dependencias: <code>PREFIX-print-in-frame</code> y <code>lodash.times</code>.</p>
+<p>Para hacer actualizaciones a tu paquete y probarlas en un proyecto antes de publicar una nueva versión, puedes usar el comando <code>npm link</code> para hacer temporalmente que un proyecto use un paquete local en lugar del instalado a través del registro. En la carpeta <code>print-in-frame</code>, ejecuta <code>npm link</code>; luego en la carpeta del proyecto principal, ejecuta <code>npm link PREFIX-print-in-frame</code>.</p>
+<p>Ahora puedes hacer cambios en tu carpeta de paquete local y probarlos en tu proyecto principal. Una vez que hayas terminado, puedes incrementar la propiedad <code>version</code> en el archivo <code>package.json</code> de tu paquete y ejecutar <code>npm publish</code> nuevamente.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Usé módulos ES para <code>print-in-frame</code>. Esto significa que solo se puede usar en proyectos que usan módulos ES. Si quieres crear un paquete que se pueda usar en cualquier proyecto Node, necesitarás crear también una versión CommonJS. Puedes usar herramientas como Babel o TypeScript para automatizar tareas como estas.</p>
+</div>
+<hr />
+<h2 id="scripts-npm-run">Scripts npm Run<a class="headerlink" href="#scripts-npm-run" title="Permanent link">&para;</a></h2>
+<p>Los scripts son una característica de npm que permite a los desarrolladores realizar fácilmente (o automatizar) tareas comunes como construir, probar y desplegar aplicaciones.</p>
+<p>Puedes definir un script run bajo la sección <code>scripts</code> en <code>package.json</code>. Cuando ejecutas el comando <code>npm init</code>, incluirá un script run de ejemplo:</p>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Puedes usar ese script test ejecutando <code>npm run test</code>. Algunos nombres comunes de scripts run (como <code>test</code>, <code>start</code>, <code>stop</code>) también tienen un alias abreviado. Puedes ejecutar el script test aquí con solo <code>npm test</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Si ejecutas el comando <code>npm run</code> sin ningún argumento, listará todos los scripts definidos en el proyecto.</p>
+</div>
+<p>El script <strong>test</strong> de ejemplo solo muestra un mensaje de error, pero nota cómo usó comandos de shell como <code>echo</code> y <code>exit</code>. Puedes usar cualquier comando de shell disponible en tu máquina. Por ejemplo, prueba un script para <code>ls -al</code> o para <code>npm ls | grep 'extraneous'</code>.</p>
+<p>Este último es un buen ejemplo de cómo una tarea común del proyecto puede simplificarse en un script run y documentarse para otros miembros del equipo que no saben sobre ello. ¿Cuál es un buen nombre intuitivo para esa tarea? Quizás <code>list-unused-packages</code>:</p>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span><span class="nt">&quot;list-unused-packages&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npm ls | grep &#39;extraneous&#39;&quot;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Ahora un desarrollador que no conoce esta etiqueta extraneous puede mirar este script run y descubrir cómo listar cualquier paquete no utilizado en el proyecto. Solo necesitan ejecutar <code>npm run list-unused-packages</code>.</p>
+<p>Esto se vuelve más importante cuando publicas paquetes para que otros equipos los usen. El mejor lugar para comunicar a los desarrolladores cómo usar un paquete es en los scripts npm run.</p>
+<p>Los scripts run ayudan a los desarrolladores a automatizar tareas repetitivas. Primero, si necesitas ejecutar algo repetidamente para el proyecto —por ejemplo, ejecutar todas las pruebas de integración— tendrás una forma simple e intuitiva de hacerlo, en lugar de tener que descubrir el comando exacto cada vez. Más importante aún, un script npm run hará que la ejecución de esta tarea sea consistente entre todos los desarrolladores. Todos los desarrolladores deberían usar exactamente el mismo comando para ejecutar todas las pruebas de integración.</p>
+<p>Incluso más importante, si la forma de ejecutar todas las pruebas de integración necesita cambiar, en lugar de anunciar manualmente este cambio en un canal de chat, puedes comunicarlo con un cambio en <code>package.json</code>, que se mantiene para siempre en el historial de Git del proyecto.</p>
+<p>Incluso puedes hacer que la automatización sea oficial y adoptar una forma de ejecutar tareas automáticamente antes o después de otras tareas. Por ejemplo, a menudo olvido ejecutar <code>npm prune &amp;&amp; npm install</code> después de traer nuevo código e intentar ejecutar todas las pruebas. Puedes usar un script npm run para ejecutar automáticamente el pruning y la instalación cada vez que ejecutes las pruebas.</p>
+<p>Para hacer eso, puedes definir nombres de script usando un prefijo <code>pre</code> o <code>post</code>. Para este ejemplo, podemos definir un script <code>pretest</code> para hacer prune/install:</p>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">  </span><span class="nt">&quot;pretest&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npm prune &amp;&amp; npm install&quot;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Con ese script especial en su lugar, cada vez que ejecutes <code>npm test</code>, los comandos prune/install se ejecutarán antes de ejecutar las pruebas.</p>
+<p>Esto funciona con cualquier nombre de script. Si tienes un nombre de script <code>dosomething</code>, puedes definir los scripts <code>predosomething</code> y <code>postdosomething</code> para ejecutar tareas antes o después de ejecutar <code>dosomething</code>.</p>
+<p>Esto es genial para muchos casos de uso. Puedes, por ejemplo, automatizar la ejecución de pruebas, formateo/linting o generación de documentación cada vez que intentas enviar nuevo código a su repositorio.</p>
+<p>Otra cosa interesante sobre los scripts npm run es que ejecutarán cualquier herramienta de línea de comandos instalada bajo el proyecto. No necesitas especificar explícitamente la ruta a estos comandos.</p>
+<p>Por ejemplo, ejecuta <code>npm i eslint</code> bajo el proyecto para instalar el comando <code>eslint</code> de línea de comandos. Ahora, si estás en la carpeta del proyecto e intentas ejecutar el comando <code>eslint</code>, no estará disponible. Ese comando está en algún lugar dentro de la carpeta <code>node_modules</code>, pero npm no lo hace disponible globalmente. Sin embargo, los scripts npm run reconocen los comandos disponibles bajo <code>node_modules</code>. Para probar eso, agrega el siguiente script:</p>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="err">...</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">  </span><span class="nt">&quot;lint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eslint&quot;</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Ahora puedes ejecutar <code>npm run lint</code> y npm encontrará el comando <code>eslint</code> y lo ejecutará.</p>
+<p>Incluso puedes incluir argumentos, y npm los pasará a lo que estés ejecutando, pero dado que los comandos npm también aceptan argumentos, necesitarás usar un separador <code>--</code> para pasar argumentos al script ejecutado. Por ejemplo, para ver la página de ayuda de eslint, esto es lo que necesitas hacer:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>$<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>lint<span class="w"> </span>--<span class="w"> </span>--help
+</span></code></pre></div></td></tr></table></div>
+<p>Ejecutar la misma línea sin el separador de argumentos <code>--</code> mostrará la página de ayuda del comando <code>run-script</code> de npm. Cualquier argumento que pases antes del separador <code>--</code> será usado por el comando <code>run-script</code> de npm.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Nombro el script <code>lint</code> (en lugar de <code>eslint</code>) intencionalmente. Los nombres genéricos son mejores bajo los scripts npm. Quizás en el futuro usemos algo diferente a eslint para hacer lint. Cambiar el nombre de un script run podría romper cosas en el futuro, especialmente tareas automatizadas.</p>
+</div>
+<hr />
+<h2 id="el-comando-npx">El Comando npx<a class="headerlink" href="#el-comando-npx" title="Permanent link">&para;</a></h2>
+<p>Otra opción para ejecutar una herramienta de línea de comandos instalada en un proyecto es <code>npx</code> (que significa <strong>node package execute</strong>). Por ejemplo, ejecutar <code>npx eslint --help</code> siempre funcionará, incluso si el paquete ESLint no está instalado en el proyecto.</p>
+<p>Si un paquete está instalado, el comando <code>npx</code> usará la carpeta local dentro de <code>node_modules</code>. Si el paquete no está instalado localmente, <code>npx</code> descargará automáticamente una copia temporal del paquete y la usará para ejecutar el comando.</p>
+<p>Pruébalo con eslint. Desinstálalo con <code>npm uninstall eslint</code>, luego ejecuta <code>npx eslint --help</code> para ver cómo <code>npx</code> descargará y luego ejecutará el comando.</p>
+<p>Al igual que npm, puedes usar <code>npx</code> con versiones específicas. Por ejemplo, digamos que necesitas descubrir cuál de las opciones de eslint (que puedes ver en la página de ayuda) existían desde el principio, desde la primera versión disponible de eslint.</p>
+<p>Puedes usar el comando <code>npm show</code> para descubrir la versión más temprana disponible de eslint:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>$<span class="w"> </span>npm<span class="w"> </span>show<span class="w"> </span>eslint<span class="w"> </span>versions
+</span></code></pre></div></td></tr></table></div>
+<p>Cuando probé este comando, la versión más temprana de eslint era <code>0.4.0</code>. Nota que una versión anterior podría haber estado disponible, pero los mantenedores de eslint decidieron eliminarla del registro.</p>
+<p>Para ver la página de ayuda del comando <code>eslint@0.4.0</code>, puedes ejecutar <code>npx eslint@0.4.0 --help</code>, como se muestra en la Figura 5-7.</p>
+<p><img alt="" src="../Usingnpx.png" /></p>
+<p>El comando <code>npx</code> se usa comúnmente para iniciar un proyecto desde una plantilla. Un ejemplo de un paquete que se puede usar de esa manera es <code>create-react-app</code>. Puedes usarlo a través del comando <code>npx</code> para generar una aplicación React funcional usando una de las muchas plantillas soportadas:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>$<span class="w"> </span>npx<span class="w"> </span>create-react-app<span class="w"> </span>your-app-name-here
+</span></code></pre></div></td></tr></table></div>
+<p>Esto no solo descargará una copia temporal del paquete <code>create-react-app</code>, sino que luego reconocerá que este es un paquete generador con un comando predeterminado para crear un proyecto. Ejecutará ese comando predeterminado.</p>
+<p>Los paquetes generadores pueden incluso tener múltiples comandos. Revisa la página de ayuda del paquete generador <code>@vue/cli</code> para ver un ejemplo de eso:</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>$<span class="w"> </span>npx<span class="w"> </span>@vue/cli<span class="w"> </span>--help
+</span></code></pre></div></td></tr></table></div>
+<h2 id="resumen">Resumen<a class="headerlink" href="#resumen" title="Permanent link">&para;</a></h2>
+<p>Un gestor de paquetes como npm es una parte importante del trabajo en un proyecto Node. Introduce una forma simple y estándar de tratar con las dependencias externas del proyecto y mantenerlas actualizadas, consistentes y libres de conflictos.</p>
+<p>Con npm, los paquetes se alojan en un registro público, y el comando npm está configurado para trabajar con ese registro. Comandos relacionados de npm como <code>install</code>, <code>update</code>, <code>search</code> y más también funcionan con ese registro.</p>
+<p>Los archivos <code>package.json</code> y <code>package-lock.json</code> son modificados automáticamente por npm cada vez que hay un cambio en el árbol de dependencias del proyecto. Estos archivos almacenan qué versiones de paquetes están instaladas y qué rango de versiones se debe usar al actualizar paquetes.</p>
+<p>Además del comando <code>npm</code>, también hay un comando <code>npx</code> que se puede usar para ejecutar herramientas de línea de comandos locales o remotas.</p>
+<p>En el próximo capítulo, exploraremos cómo trabajar con streams en Node para manejar eficientemente grandes cantidades de datos sin agotar el proceso.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../cap4/ErrorsandDebugging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ERRORS AND DEBUGGING">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                ERRORS AND DEBUGGING
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../cap6/Streams/" class="md-footer__link md-footer__link--next" aria-label="Next: STREAM">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                STREAM
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+    
+  </body>
+</html>
